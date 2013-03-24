@@ -2,6 +2,7 @@
 import serial
 from serial.tools import list_ports
 
+# ======================= IMUSensorClass ======================= 
 class IMUSensorClass:
 
   # establish connection
@@ -28,27 +29,45 @@ class IMUSensorClass:
     try:
       self.ser
       print "Connecting to port " + portName + "."
-      self.readData()
+      self.getData()
       return
     except:
       raise serial.serialutil.SerialException
 
 
-  # return IMU data
-  def readData(self):
+  # get new IMU data
+  def getData(self):
     while 1:
       try:
         raw_data = self.ser.readline()
         raw_data = raw_data.rstrip().rsplit('=')[1].rsplit(',')
 
-        self.roll = float(raw_data[2])
-        self.pitch = float(raw_data[1])
-        self.yaw = float(raw_data[0])
-        return
+        self.ypr = YPRDataClass(raw_data[0], raw_data[1], raw_data[2])
+        return self.ypr
 
       except:
         print "Error getting data. Trying again."
         pass
 
-  def printIMUData(self):
+  def updateNeutralYpr(self):
+    self.neutralYpr = self.getData()
+    print "Updated Neutral YPR values to "
+    self.neutralYpr.prettyPrint()
+
+  def printData(self):
+    self.getData().prettyPrint()
+
+
+
+# ======================= IMUDataClass ======================= 
+class YPRDataClass:
+  def __init__(self, yaw, pitch, roll):
+    self.yaw = yaw
+    self.pitch = pitch
+    self.roll = roll
+
+  def prettyPrint(self):
     print "ypr: " + str(self.yaw) + ", " + str(self.pitch) + ", " + str(self.roll)
+
+
+

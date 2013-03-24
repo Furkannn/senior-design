@@ -1,12 +1,19 @@
 #!/usr/bin/python
 import serial
+import yaml
+import os
 from serial.tools import list_ports
+
 
 # ======================= IMUSensorClass ======================= 
 class IMUSensorClass:
 
   # establish connection
   def __init__(self, baudrate = 57600, portName = 'na'):
+
+    # get paramters
+    self.paramsFilename = 'HeadTrackingParams.yaml'
+    self.readParams()
 
     # try to connect to the provided portname
     try: 
@@ -53,6 +60,29 @@ class IMUSensorClass:
     self.neutralYpr = self.getData()
     print "Updated Neutral YPR values to "
     self.neutralYpr.prettyPrint()
+
+  def optimizeNeutralYpr(self):
+    return
+  
+  def calculateDisplacement(self):
+    return
+
+  def readParams(self):
+    f = open(self.paramsFilename, 'r')
+    self.params = yaml.load(f)
+    print "Loaded new params: " + str(self.params)
+    f.close()
+    # update lastModTime
+    self.lastModTime = os.stat(self.paramsFilename).st_mtime
+
+
+  def checkForNewParams(self):
+    modTime = os.stat(self.paramsFilename).st_mtime
+    if self.lastModTime != modTime:
+      self.readParams()
+      self.lastModTime = modTime
+    else:
+      print "no change in params file"
 
   def printData(self):
     self.getData().prettyPrint()

@@ -58,7 +58,10 @@ class HeadTrackingFSMClass:
     # ======== Calculate State ========
     elif self.currentState == State.Calculate:
       print "\nexecuteBehavior - calculate"
-      self.imuSensor.printData()
+      self.imuSensor.checkForNewParams()
+      self.imuSensor.optimizeNeutralYpr()
+      self.imuSensor.calculateDisplacement()
+
 
     # reset switched
     self.switched = False

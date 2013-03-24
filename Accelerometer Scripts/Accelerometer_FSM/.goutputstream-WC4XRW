@@ -1,0 +1,57 @@
+//================================================================================================
+// define states here
+//================================================================================================
+final char CALIBRATE = 'C'; // always needs to be defined !
+final char NEUTRAL = 'N';
+final char DEFLECTED = 'D';
+
+//================================================================================================
+// Check for triggers that change state 
+//================================================================================================
+void checkTriggers(int elapsed) {
+
+  switch(state_) {
+
+  case CALIBRATE:  
+    // switch to NEUTRAL after 4 seconds
+    if (elapsed > 4000) switchToState(NEUTRAL);
+    break;
+
+  case NEUTRAL:  
+    // switch to DEFLECTED if deflection > 10%
+    if (deflection() > 0.10) switchToState(DEFLECTED);
+    break;
+
+  case DEFLECTED:    
+    // switch to NEUTRAL if deflection < 10%
+    if (deflection() < 0.10) switchToState(NEUTRAL);
+    break;
+
+  } // triggers
+}
+
+//================================================================================================
+// now execute current behavior
+//================================================================================================
+void executeBehavior(int elapsed) {
+  switch(state_) {
+    
+  case START:  
+    if (switched_==1) setSpeeds(60, 60);
+    break;
+
+  case FOLLOW:  
+    followPID(switched_);
+    break;
+
+  case UTURN:  
+    // if we just switcghed, set motors to turn on a dime
+    if (switched_==1) setSpeeds(80, -80);
+    // else keep this sped untiltimer elapses !
+    break;
+
+  } // behaviors
+}
+
+//================================================================================================
+

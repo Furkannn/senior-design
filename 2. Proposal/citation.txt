@@ -1,0 +1,10 @@
+[4] HeadMouse Extreme [Online]. Available: http://www.orin.com/access/headmouse
+
+
+[7] A. De Santis and D. Iacoviello, “Robust Real Time Eye Tracking for Computer Interface for Disabled People,” Comput. Methods and Programs in Biomed., vol. 96, no. 1, pp. 1-11, Oct. 2009.
+
+
+[8] Wasn't in my TRP. Maybe ask Seth? maybe this from google? 
+
+Eye Tracking: The eyes have it [Online]. Available: 
+http://www.economist.com/news/technology-quarterly/21567195-computer-interfaces-ability-determine-location-persons-gaze

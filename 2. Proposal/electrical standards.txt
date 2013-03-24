@@ -1,0 +1,19 @@
+General Electrical Safety Standards
+
+OSHA  1910.335 Regulations
+
+1910.335(a)(1)(iv)
+
+    Employees shall wear nonconductive head protection wherever there is a danger of head injury from electric shock or burns due to contact with exposed energized parts.
+	
+1910.335(a)(1)(v)
+
+    Employees shall wear protective equipment for the eyes or face wherever there is danger of injury to the eyes or face from electric arcs or flashes or from flying objects resulting from electrical explosion.	
+	
+Other Miscellaneous Standards
+
+	Employers should use ground-fault circuit interrupters (GFCI's) on all 120-volt, single-phase, and 15- and 20-ampere receptacles.
+		The ground-fault circuit interrupter, or GFCI, is a fast-acting circuit breaker designed to shut off electric power in the event of a ground-fault and prevent injury to the worker.
+	With the ground wire disconnected, the chassis leakage is limited to 100 uA and the patient lead leakage must not exceed 50 uA.
+	
+	

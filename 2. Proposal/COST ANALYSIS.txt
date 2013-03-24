@@ -1,0 +1,10 @@
+Marketing Analysis
+The product is mainly designed to be a device for use by individuals with motor impairments. The $300 cost is much less than the previously mentioned alternatives. This device can also be distributed among hospitals seeking another form of patient rehabilitation. If the price seems too expensive, instead of allocating a device to each patient, they could be rentable from a workstation for the patients to use as needed. 
+
+
+
+Cost Analysis
+
+For the final product design, a marketable design would include only the necessary products surface mounted onto a PCB board. This would remove some of the unecessary weight from the prototype. Also, the use of those specific components would remove a lot of the costs associated with the parts. For example, the IMU which was priced at $99.95 was comprised of individual components that cost around $30 when purchased in bulk.
+ (INSERT TABLE OF BULK PRICING)
+Assuming bulk pricing, the parts cost for a single unit would be $62, with a high estimate accounted for PCB and Plastic casing. The estimated total cost including labor is $117. Using 30% Fringe Benefits, 120% Overhead, 10% Sales Expense, the profit per unit would be $13 with a $300 selling price.

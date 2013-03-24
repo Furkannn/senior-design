@@ -11,9 +11,16 @@ class HostDeviceClass:
   def centerCursor(self):
     self.cursor = CursorClass(self.screen.width/2, self.screen.height/2)
     print "Updated Cursor Position to center of screen (" + str(self.cursor.x) + ", " + str(self.cursor.y) + ")."
+    self.moveCursor()
 
   def moveCursor(self):
     self.m.move(self.cursor.x, self.cursor.y)
+
+  def displaceCursor(self, disp):
+    self.cursor.x = self.cursor.x + disp['x']
+    self.cursor.y = self.cursor.y + disp['y']
+    #TODO screen limits
+    self.moveCursor()
 
 
 

@@ -42,6 +42,7 @@ class IMUSensorClass:
       raise serial.serialutil.SerialException
 
 
+
   # get new IMU data
   def getData(self):
     while 1:
@@ -49,8 +50,8 @@ class IMUSensorClass:
         raw_data = self.ser.readline()
         raw_data = raw_data.rstrip().rsplit('=')[1].rsplit(',')
 
-        self.ypr = YPRDataClass(raw_data[0], raw_data[1], raw_data[2])
-        return self.ypr
+        self.currentYpr = YPRDataClass(float(raw_data[0]), float(raw_data[1]), float(raw_data[2]))
+        return self.currentYpr
 
       except:
         print "Error getting data. Trying again."
@@ -62,10 +63,32 @@ class IMUSensorClass:
     self.neutralYpr.prettyPrint()
 
   def optimizeNeutralYpr(self):
+    self.optimizedNeutralYpr = self.neutralYpr
     return
   
-  def calculateDisplacement(self):
+  def calculateCursorDisplacement(self):
+    #yaw_disp*a + x_sign*yaw_disp*yaw_disp*b
+
+    self.getData()
+    yaw_disp = self.optimizedNeutralYpr.yaw - self.currentYpr.yaw
+    pitch_disp = self.optimizedNeutralYpr.pitch - self.currentYpr.pitch
+    roll_disp = self.optimizedNeutralYpr.roll - self.currentYpr.roll
+
+    x_sign = 1
+    y_sign = 1
+    if yaw_disp < 0: x_sign = -1
+    if pitch_disp < 0: y_sign = -1
+    
+    x_disp = yaw_disp   * self.params['alpha']  +  x_sign * yaw_disp   * yaw_disp   * self.params['beta']
+    y_disp = pitch_disp * self.params['alpha']  +  y_sign * pitch_disp * pitch_disp * self.params['beta']
+
+    #TODO implement neutral zone
+    #print x_disp
+    #print y_disp
+    self.cursorDisp = {'x': x_disp, 'y': y_disp}
     return
+
+
 
   def readParams(self):
     f = open(self.paramsFilename, 'r')
@@ -74,7 +97,6 @@ class IMUSensorClass:
     f.close()
     # update lastModTime
     self.lastModTime = os.stat(self.paramsFilename).st_mtime
-
 
   def checkForNewParams(self):
     modTime = os.stat(self.paramsFilename).st_mtime

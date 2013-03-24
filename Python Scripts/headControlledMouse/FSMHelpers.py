@@ -60,7 +60,8 @@ class HeadTrackingFSMClass:
       print "\nexecuteBehavior - calculate"
       self.imuSensor.checkForNewParams()
       self.imuSensor.optimizeNeutralYpr()
-      self.imuSensor.calculateDisplacement()
+      self.imuSensor.calculateCursorDisplacement()
+      self.hostDevice.displaceCursor(self.imuSensor.cursorDisp)
 
 
     # reset switched

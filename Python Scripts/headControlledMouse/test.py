@@ -1,6 +1,5 @@
-import IMUSerial
+import IMUHelpers
 
-ser = IMUSerial.serialSetup()
+IMUSensor = IMUHelpers.IMUSensorClass()
+IMUSensor.printIMUData()
 
-for i in range(1, 100):
-  print IMUSerial.readIMUData(ser)

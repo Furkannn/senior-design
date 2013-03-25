@@ -5,6 +5,7 @@ import os
 import time
 import sys
 from serial.tools import list_ports
+import HostDeviceHelpers
 
 
 # ======================= IMUSensorClass ======================= 
@@ -67,8 +68,12 @@ class IMUSensorClass:
       self.neutralYpr = self.getData()
       #print "Updated Neutral YPR values to "
     self.neutralYpr.prettyPrint()
+    self.optimizedNeutralYpr = self.neutralYpr
+    self.cursorDisp = HostDeviceHelpers.CursorClass(0.0, 0.0)
 
   def optimizeNeutralYpr(self):
+    self.optimizedNeutralYpr.yaw   = self.optimizedNeutralYpr.yaw   - self.params['gamma'] * self.cursorDisp.x
+    self.optimizedNeutralYpr.pitch = self.optimizedNeutralYpr.pitch - self.params['gamma'] * self.cursorDisp.y
     self.optimizedNeutralYpr = self.neutralYpr
     return
   
@@ -98,7 +103,7 @@ class IMUSensorClass:
     else:
       y_disp = y_sign * (abs(y_disp) - self.params['neutralZone'])
 
-    self.cursorDisp = {'x': x_disp, 'y': y_disp}
+    self.cursorDisp = HostDeviceHelpers.CursorClass(x_disp, y_disp)
     return
 
 

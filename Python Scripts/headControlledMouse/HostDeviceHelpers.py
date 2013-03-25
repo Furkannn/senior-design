@@ -1,6 +1,6 @@
 #!/usr/bin/python
-
 from pymouse import PyMouse
+
 class HostDeviceClass:
 
   def __init__(self):
@@ -18,8 +18,8 @@ class HostDeviceClass:
 
   def displaceCursor(self, disp):
     # update cursor
-    self.cursor.x = self.cursor.x + disp['x']
-    self.cursor.y = self.cursor.y + disp['y']
+    self.cursor.x = self.cursor.x + disp.x
+    self.cursor.y = self.cursor.y + disp.y
 
     # screen limits
     if self.cursor.x > self.screen.width:
@@ -31,8 +31,6 @@ class HostDeviceClass:
     if self.cursor.y < 0:
       self.cursor.y = 0
     self.moveCursor()
-
-
 
 
 class CursorClass:

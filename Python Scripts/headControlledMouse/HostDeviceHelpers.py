@@ -17,9 +17,19 @@ class HostDeviceClass:
     self.m.move(self.cursor.x, self.cursor.y)
 
   def displaceCursor(self, disp):
+    # update cursor
     self.cursor.x = self.cursor.x + disp['x']
     self.cursor.y = self.cursor.y + disp['y']
-    #TODO screen limits
+
+    # screen limits
+    if self.cursor.x > self.screen.width:
+      self.cursor.x = self.screen.width
+    if self.cursor.x < 0:
+      self.cursor.x = 0
+    if self.cursor.y > self.screen.height:
+      self.cursor.y = self.screen.height
+    if self.cursor.y < 0:
+      self.cursor.y = 0
     self.moveCursor()
 
 

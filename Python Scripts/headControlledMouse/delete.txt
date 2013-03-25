@@ -1,0 +1,1008 @@
+
+
+============    Head Tracking Log   ============
+
+executeBehavior - init
+Loaded new params: {'alpha': 0.4, 'beta': 0.05, 'gamma': 0.006}
+Default and user specified port did not work.
+Trying port: /dev/ttyACM0.
+Connecting to port /dev/ttyACM0.
+Xlib.protocol.request.QueryExtension
+Xlib.protocol.request.QueryExtension
+checkTriggers - init
+
+executeBehavior - calibrate
+Updated Neutral YPR values to 
+ypr: -25.92, 42.05, -92.63
+Updated Neutral YPR values to 
+ypr: -25.93, 42.09, -92.69
+Updated Neutral YPR values to 
+ypr: -25.95, 42.11, -92.73
+Updated Neutral YPR values to 
+ypr: -26.07, 42.13, -92.65
+Updated Neutral YPR values to 
+ypr: -26.13, 42.11, -92.67
+Updated Neutral YPR values to 
+ypr: -26.2, 42.07, -92.64
+Updated Neutral YPR values to 
+ypr: -26.3, 42.12, -92.59
+Updated Neutral YPR values to 
+ypr: -26.4, 42.14, -92.54
+Updated Neutral YPR values to 
+ypr: -26.49, 42.1, -92.5
+Updated Neutral YPR values to 
+ypr: -26.62, 42.07, -92.4
+Updated Neutral YPR values to 
+ypr: -26.74, 42.05, -92.3
+Updated Neutral YPR values to 
+ypr: -26.85, 42.05, -92.24
+Updated Neutral YPR values to 
+ypr: -26.96, 42.05, -92.13
+Updated Neutral YPR values to 
+ypr: -27.02, 42.06, -92.1
+Updated Neutral YPR values to 
+ypr: -27.07, 42.06, -92.07
+Updated Neutral YPR values to 
+ypr: -27.09, 42.09, -92.05
+Updated Neutral YPR values to 
+ypr: -27.08, 42.1, -92.04
+Updated Neutral YPR values to 
+ypr: -27.03, 42.08, -92.11
+Updated Neutral YPR values to 
+ypr: -27.01, 42.08, -92.14
+Updated Neutral YPR values to 
+ypr: -27.0, 42.08, -92.17
+Updated Neutral YPR values to 
+ypr: -26.98, 42.04, -92.19
+Updated Neutral YPR values to 
+ypr: -26.96, 42.03, -92.21
+Updated Neutral YPR values to 
+ypr: -26.89, 42.02, -92.31
+Updated Neutral YPR values to 
+ypr: -26.92, 42.01, -92.26
+Updated Neutral YPR values to 
+ypr: -26.95, 41.96, -92.22
+Updated Neutral YPR values to 
+ypr: -26.92, 41.97, -92.25
+Updated Neutral YPR values to 
+ypr: -26.89, 41.96, -92.28
+Updated Neutral YPR values to 
+ypr: -26.89, 41.92, -92.28
+Updated Neutral YPR values to 
+ypr: -26.92, 41.91, -92.23
+Updated Neutral YPR values to 
+ypr: -26.94, 41.91, -92.22
+Updated Neutral YPR values to 
+ypr: -26.92, 41.92, -92.27
+Updated Neutral YPR values to 
+ypr: -26.94, 41.91, -92.29
+Updated Neutral YPR values to 
+ypr: -26.99, 41.88, -92.21
+Updated Neutral YPR values to 
+ypr: -27.0, 41.91, -92.14
+Updated Neutral YPR values to 
+ypr: -26.95, 41.98, -92.22
+Updated Neutral YPR values to 
+ypr: -26.92, 42.06, -92.32
+Updated Neutral YPR values to 
+ypr: -26.98, 42.04, -92.32
+Updated Neutral YPR values to 
+ypr: -27.07, 41.96, -92.28
+Updated Neutral YPR values to 
+ypr: -27.15, 41.87, -92.27
+Updated Neutral YPR values to 
+ypr: -27.22, 41.85, -92.24
+Updated Neutral YPR values to 
+ypr: -27.32, 41.89, -92.2
+Updated Neutral YPR values to 
+ypr: -27.39, 41.94, -92.18
+Updated Neutral YPR values to 
+ypr: -27.48, 42.01, -92.1
+Updated Neutral YPR values to 
+ypr: -27.48, 42.11, -92.17
+Updated Neutral YPR values to 
+ypr: -27.47, 42.2, -92.24
+Updated Neutral YPR values to 
+ypr: -27.52, 42.31, -92.22
+Updated Neutral YPR values to 
+ypr: -27.57, 42.43, -92.22
+Updated Neutral YPR values to 
+ypr: -27.59, 42.54, -92.29
+Updated Neutral YPR values to 
+ypr: -27.56, 42.64, -92.41
+Updated Cursor Position to center of screen (960, 540).
+checkTriggers - calibrate
+
+executeBehavior - calculate
+no change in params file
+cursor disp {'y': -0.05698000000000024, 'x': 0.0}
+ypr: -27.56, 42.78, -92.49
+checkTriggers - calculate
+
+executeBehavior - calculate
+no change in params file
+cursor disp {'y': -0.1159200000000005, 'x': 0.00801999999999983}
+ypr: -27.58, 42.92, -92.53
+checkTriggers - calculate
+
+executeBehavior - calculate
+no change in params file
+cursor disp {'y': -0.185679999999999, 'x': -0.012044999999999027}
+ypr: -27.53, 43.08, -92.67
+checkTriggers - calculate
+
+executeBehavior - calculate
+no change in params file
+cursor disp {'y': -0.26721999999999885, 'x': -0.04871999999999895}
+ypr: -27.44, 43.26, -92.9
+checkTriggers - calculate
+
+executeBehavior - calculate
+no change in params file
+cursor disp {'y': -0.33764499999999814, 'x': -0.09041999999999953}
+ypr: -27.34, 43.41, -93.13
+checkTriggers - calculate
+
+executeBehavior - calculate
+no change in params file
+cursor disp {'y': -0.445005000000001, 'x': -0.12020499999999963}
+ypr: -27.27, 43.63, -93.32
+checkTriggers - calculate
+
+executeBehavior - calculate
+no change in params file
+cursor disp {'y': -0.5416199999999999, 'x': -0.1945799999999988}
+ypr: -27.1, 43.82, -93.63
+checkTriggers - calculate
+
+executeBehavior - calculate
+no change in params file
+cursor disp {'y': -0.6526050000000003, 'x': -0.33287999999999907}
+ypr: -26.8, 44.03, -94.02
+checkTriggers - calculate
+
+executeBehavior - calculate
+no change in params file
+cursor disp {'y': -0.7401249999999985, 'x': -0.5364449999999991}
+ypr: -26.39, 44.19, -94.48
+checkTriggers - calculate
+
+executeBehavior - calculate
+no change in params file
+cursor disp {'y': -0.8188049999999988, 'x': -0.8131199999999998}
+ypr: -25.88, 44.33, -95.02
+checkTriggers - calculate
+
+executeBehavior - calculate
+no change in params file
+cursor disp {'y': -0.9228449999999986, 'x': -1.0727199999999986}
+ypr: -25.44, 44.51, -95.45
+checkTriggers - calculate
+
+executeBehavior - calculate
+no change in params file
+cursor disp {'y': -1.006004999999999, 'x': -1.3451249999999981}
+ypr: -25.01, 44.65, -95.9
+checkTriggers - calculate
+
+executeBehavior - calculate
+no change in params file
+cursor disp {'y': -1.048319999999999, 'x': -1.5667199999999994}
+ypr: -24.68, 44.72, -96.24
+checkTriggers - calculate
+
+executeBehavior - calculate
+no change in params file
+cursor disp {'y': -1.0180450000000008, 'x': -1.7204999999999986}
+ypr: -24.46, 44.67, -96.49
+checkTriggers - calculate
+
+executeBehavior - calculate
+no change in params file
+cursor disp {'y': -0.9641799999999987, 'x': -1.756124999999999}
+ypr: -24.41, 44.58, -96.53
+checkTriggers - calculate
+
+executeBehavior - calculate
+no change in params file
+cursor disp {'y': -0.911125000000001, 'x': -1.7418449999999994}
+ypr: -24.43, 44.49, -96.52
+checkTriggers - calculate
+
+executeBehavior - calculate
+no change in params file
+cursor disp {'y': -0.8646449999999977, 'x': -1.6992450000000003}
+ypr: -24.49, 44.41, -96.49
+checkTriggers - calculate
+
+executeBehavior - calculate
+no change in params file
+cursor disp {'y': -0.8359199999999994, 'x': -1.6430049999999992}
+ypr: -24.57, 44.36, -96.51
+checkTriggers - calculate
+
+executeBehavior - calculate
+no change in params file
+cursor disp {'y': -0.8131199999999998, 'x': -1.573604999999998}
+ypr: -24.67, 44.32, -96.48
+checkTriggers - calculate
+
+executeBehavior - calculate
+no change in params file
+cursor disp {'y': -0.8302050000000005, 'x': -1.5119999999999982}
+ypr: -24.76, 44.35, -96.45
+checkTriggers - calculate
+
+executeBehavior - calculate
+no change in params file
+cursor disp {'y': -0.858879999999999, 'x': -1.4781250000000001}
+ypr: -24.81, 44.4, -96.49
+checkTriggers - calculate
+
+executeBehavior - calculate
+no change in params file
+cursor disp {'y': -0.9169799999999997, 'x': -1.4378049999999987}
+ypr: -24.87, 44.5, -96.5
+checkTriggers - calculate
+
+executeBehavior - calculate
+no change in params file
+cursor disp {'y': -0.952320000000001, 'x': -1.3846049999999996}
+ypr: -24.95, 44.56, -96.46
+checkTriggers - calculate
+
+executeBehavior - calculate
+no change in params file
+cursor disp {'y': -0.9701250000000017, 'x': -1.364819999999999}
+ypr: -24.98, 44.59, -96.48
+checkTriggers - calculate
+
+executeBehavior - calculate
+no change in params file
+cursor disp {'y': -0.9760800000000005, 'x': -1.3255199999999996}
+ypr: -25.04, 44.6, -96.47
+checkTriggers - calculate
+
+executeBehavior - calculate
+no change in params file
+cursor disp {'y': -0.9880199999999982, 'x': -1.2736799999999986}
+ypr: -25.12, 44.62, -96.41
+checkTriggers - calculate
+
+executeBehavior - calculate
+no change in params file
+cursor disp {'y': -0.9582449999999999, 'x': -1.2097799999999999}
+ypr: -25.22, 44.57, -96.33
+checkTriggers - calculate
+
+executeBehavior - calculate
+no change in params file
+cursor disp {'y': -0.9346050000000004, 'x': -1.1282049999999983}
+ypr: -25.35, 44.53, -96.22
+checkTriggers - calculate
+
+executeBehavior - calculate
+no change in params file
+cursor disp {'y': -0.9228449999999986, 'x': -1.0422450000000003}
+ypr: -25.49, 44.51, -96.09
+checkTriggers - calculate
+
+executeBehavior - calculate
+no change in params file
+cursor disp {'y': -0.8936200000000003, 'x': -0.9582449999999999}
+ypr: -25.63, 44.46, -95.96
+checkTriggers - calculate
+
+executeBehavior - calculate
+no change in params file
+cursor disp {'y': -0.858879999999999, 'x': -0.8531250000000001}
+ypr: -25.81, 44.4, -95.82
+checkTriggers - calculate
+
+executeBehavior - calculate
+no change in params file
+cursor disp {'y': -0.8245000000000017, 'x': -0.7456799999999993}
+ypr: -26.0, 44.34, -95.65
+checkTriggers - calculate
+
+executeBehavior - calculate
+no change in params file
+cursor disp {'y': -0.7904800000000003, 'x': -0.6526049999999984}
+ypr: -26.17, 44.28, -95.54
+checkTriggers - calculate
+
+executeBehavior - calculate
+no change in params file
+cursor disp {'y': -0.762404999999998, 'x': -0.578125}
+ypr: -26.31, 44.23, -95.47
+checkTriggers - calculate
+
+executeBehavior - calculate
+no change in params file
+cursor disp {'y': -0.7345799999999996, 'x': -0.5056049999999997}
+ypr: -26.45, 44.18, -95.41
+checkTriggers - calculate
+
+executeBehavior - calculate
+no change in params file
+cursor disp {'y': -0.7070050000000012, 'x': -0.4201799999999989}
+ypr: -26.62, 44.13, -95.29
+checkTriggers - calculate
+
+executeBehavior - calculate
+no change in params file
+cursor disp {'y': -0.7070050000000012, 'x': -0.3376449999999998}
+ypr: -26.79, 44.13, -95.19
+checkTriggers - calculate
+
+executeBehavior - calculate
+no change in params file
+cursor disp {'y': -0.6796799999999987, 'x': -0.26721999999999885}
+ypr: -26.94, 44.08, -95.13
+checkTriggers - calculate
+
+executeBehavior - calculate
+no change in params file
+cursor disp {'y': -0.6634049999999981, 'x': -0.1990449999999995}
+ypr: -27.09, 44.05, -95.05
+checkTriggers - calculate
+
+executeBehavior - calculate
+no change in params file
+cursor disp {'y': -0.6364799999999997, 'x': -0.15047999999999975}
+ypr: -27.2, 44.0, -95.01
+checkTriggers - calculate
+
+executeBehavior - calculate
+no change in params file
+cursor disp {'y': -0.6364799999999997, 'x': -0.07361999999999988}
+ypr: -27.38, 44.0, -94.89
+checkTriggers - calculate
+
+executeBehavior - calculate
+no change in params file
+cursor disp {'y': -0.6472200000000015, 'x': -0.03640499999999994}
+ypr: -27.47, 44.02, -94.83
+checkTriggers - calculate
+
+executeBehavior - calculate
+no change in params file
+cursor disp {'y': -0.6151200000000002, 'x': -0.028245000000000117}
+ypr: -27.49, 43.96, -94.86
+checkTriggers - calculate
+
+executeBehavior - calculate
+no change in params file
+cursor disp {'y': -0.583379999999999, 'x': -0.05284499999999959}
+ypr: -27.43, 43.9, -94.98
+checkTriggers - calculate
+
+executeBehavior - calculate
+no change in params file
+cursor disp {'y': -0.5416199999999999, 'x': -0.06528000000000006}
+ypr: -27.4, 43.82, -95.08
+checkTriggers - calculate
+
+executeBehavior - calculate
+no change in params file
+cursor disp {'y': -0.5005000000000007, 'x': -0.08199999999999971}
+ypr: -27.36, 43.74, -95.17
+checkTriggers - calculate
+
+executeBehavior - calculate
+no change in params file
+cursor disp {'y': -0.460019999999998, 'x': -0.11164499999999983}
+ypr: -27.29, 43.66, -95.29
+checkTriggers - calculate
+
+executeBehavior - calculate
+no change in params file
+cursor disp {'y': -0.43504499999999946, 'x': -0.12449999999999879}
+ypr: -27.26, 43.61, -95.37
+checkTriggers - calculate
+
+executeBehavior - calculate
+no change in params file
+cursor disp {'y': -0.41524499999999986, 'x': -0.12880499999999945}
+ypr: -27.25, 43.57, -95.39
+checkTriggers - calculate
+
+executeBehavior - calculate
+no change in params file
+cursor disp {'y': -0.4201799999999989, 'x': -0.12020499999999963}
+ypr: -27.27, 43.58, -95.39
+checkTriggers - calculate
+
+executeBehavior - calculate
+no change in params file
+cursor disp {'y': -0.4201799999999989, 'x': -0.1461249999999991}
+ypr: -27.21, 43.58, -95.51
+checkTriggers - calculate
+
+executeBehavior - calculate
+no change in params file
+cursor disp {'y': -0.445005000000001, 'x': -0.1548449999999989}
+ypr: -27.19, 43.63, -95.58
+checkTriggers - calculate
+
+executeBehavior - calculate
+no change in params file
+cursor disp {'y': -0.45500499999999905, 'x': -0.14177999999999996}
+ypr: -27.22, 43.65, -95.57
+checkTriggers - calculate
+
+executeBehavior - calculate
+no change in params file
+cursor disp {'y': -0.460019999999998, 'x': -0.12880499999999945}
+ypr: -27.25, 43.66, -95.55
+checkTriggers - calculate
+
+executeBehavior - calculate
+no change in params file
+cursor disp {'y': -0.45500499999999905, 'x': -0.13312000000000013}
+ypr: -27.24, 43.65, -95.58
+checkTriggers - calculate
+
+executeBehavior - calculate
+no change in params file
+cursor disp {'y': -0.4400199999999985, 'x': -0.13312000000000013}
+ypr: -27.24, 43.62, -95.59
+checkTriggers - calculate
+
+executeBehavior - calculate
+no change in params file
+cursor disp {'y': -0.4400199999999985, 'x': -0.14177999999999996}
+ypr: -27.22, 43.62, -95.61
+checkTriggers - calculate
+
+executeBehavior - calculate
+no change in params file
+cursor disp {'y': -0.4251250000000014, 'x': -0.13744499999999926}
+ypr: -27.23, 43.59, -95.62
+checkTriggers - calculate
+
+executeBehavior - calculate
+no change in params file
+cursor disp {'y': -0.4251250000000014, 'x': -0.12449999999999879}
+ypr: -27.26, 43.59, -95.6
+checkTriggers - calculate
+
+executeBehavior - calculate
+no change in params file
+cursor disp {'y': -0.41524499999999986, 'x': -0.11591999999999898}
+ypr: -27.28, 43.57, -95.58
+checkTriggers - calculate
+
+executeBehavior - calculate
+no change in params file
+cursor disp {'y': -0.3956050000000003, 'x': -0.09887999999999934}
+ypr: -27.32, 43.53, -95.55
+checkTriggers - calculate
+
+executeBehavior - calculate
+no change in params file
+cursor disp {'y': -0.4004999999999993, 'x': -0.09041999999999953}
+ypr: -27.34, 43.54, -95.56
+checkTriggers - calculate
+
+executeBehavior - calculate
+no change in params file
+cursor disp {'y': -0.38097999999999976, 'x': -0.08199999999999971}
+ypr: -27.36, 43.5, -95.56
+checkTriggers - calculate
+
+executeBehavior - calculate
+no change in params file
+Error getting data. Trying again.
+cursor disp {'y': 0.1901250000000013, 'x': -1.153125}
+ypr: -25.31, 42.19, -92.6
+checkTriggers - calculate
+
+executeBehavior - calculate
+no change in params file
+cursor disp {'y': 0.18124499999999988, 'x': -1.146879999999999}
+ypr: -25.32, 42.21, -92.58
+checkTriggers - calculate
+
+executeBehavior - calculate
+no change in params file
+cursor disp {'y': 0.185679999999999, 'x': -1.1593799999999987}
+ypr: -25.3, 42.2, -92.62
+checkTriggers - calculate
+
+executeBehavior - calculate
+no change in params file
+cursor disp {'y': 0.18124499999999988, 'x': -1.1656449999999998}
+ypr: -25.29, 42.21, -92.62
+checkTriggers - calculate
+
+executeBehavior - calculate
+no change in params file
+Error getting data. Trying again.
+cursor disp {'y': 0.1945800000000004, 'x': -1.1406450000000004}
+ypr: -25.33, 42.18, -92.59
+checkTriggers - calculate
+
+executeBehavior - calculate
+no change in params file
+cursor disp {'y': 0.1901250000000013, 'x': -1.153125}
+ypr: -25.31, 42.19, -92.6
+checkTriggers - calculate
+
+executeBehavior - calculate
+no change in params file
+cursor disp {'y': 0.18124499999999988, 'x': -1.146879999999999}
+ypr: -25.32, 42.21, -92.58
+checkTriggers - calculate
+
+executeBehavior - calculate
+no change in params file
+cursor disp {'y': 0.185679999999999, 'x': -1.1593799999999987}
+ypr: -25.3, 42.2, -92.62
+checkTriggers - calculate
+
+executeBehavior - calculate
+no change in params file
+cursor disp {'y': 0.18124499999999988, 'x': -1.1656449999999998}
+ypr: -25.29, 42.21, -92.62
+checkTriggers - calculate
+
+executeBehavior - calculate
+no change in params file
+cursor disp {'y': 0.18124499999999988, 'x': -1.1344199999999993}
+ypr: -25.34, 42.21, -92.57
+checkTriggers - calculate
+
+executeBehavior - calculate
+no change in params file
+cursor disp {'y': 0.1901250000000013, 'x': -1.1344199999999993}
+ypr: -25.34, 42.19, -92.57
+checkTriggers - calculate
+
+executeBehavior - calculate
+no change in params file
+cursor disp {'y': 0.1945800000000004, 'x': -1.1344199999999993}
+ypr: -25.34, 42.18, -92.57
+checkTriggers - calculate
+
+executeBehavior - calculate
+no change in params file
+cursor disp {'y': 0.2080050000000009, 'x': -1.1593799999999987}
+ypr: -25.3, 42.15, -92.63
+checkTriggers - calculate
+
+executeBehavior - calculate
+no change in params file
+cursor disp {'y': 0.2080050000000009, 'x': -1.146879999999999}
+ypr: -25.32, 42.15, -92.59
+checkTriggers - calculate
+
+executeBehavior - calculate
+no change in params file
+cursor disp {'y': 0.1990449999999995, 'x': -1.1406450000000004}
+ypr: -25.33, 42.17, -92.59
+checkTriggers - calculate
+
+executeBehavior - calculate
+no change in params file
+cursor disp {'y': 0.1990449999999995, 'x': -1.1344199999999993}
+ypr: -25.34, 42.17, -92.56
+checkTriggers - calculate
+
+executeBehavior - calculate
+no change in params file
+cursor disp {'y': 0.1945800000000004, 'x': -1.1344199999999993}
+ypr: -25.34, 42.18, -92.54
+checkTriggers - calculate
+
+executeBehavior - calculate
+no change in params file
+cursor disp {'y': 0.1990449999999995, 'x': -1.1158049999999986}
+ypr: -25.37, 42.17, -92.5
+checkTriggers - calculate
+
+executeBehavior - calculate
+no change in params file
+cursor disp {'y': 0.2035200000000018, 'x': -1.1344199999999993}
+ypr: -25.34, 42.16, -92.54
+checkTriggers - calculate
+
+executeBehavior - calculate
+no change in params file
+cursor disp {'y': 0.2080050000000009, 'x': -1.1219999999999997}
+ypr: -25.36, 42.15, -92.52
+checkTriggers - calculate
+
+executeBehavior - calculate
+no change in params file
+cursor disp {'y': 0.2035200000000018, 'x': -1.1158049999999986}
+ypr: -25.37, 42.16, -92.47
+checkTriggers - calculate
+
+executeBehavior - calculate
+no change in params file
+cursor disp {'y': 0.2035200000000018, 'x': -1.1282049999999983}
+ypr: -25.35, 42.16, -92.51
+checkTriggers - calculate
+
+executeBehavior - calculate
+no change in params file
+cursor disp {'y': 0.21250000000000002, 'x': -1.1406450000000004}
+ypr: -25.33, 42.14, -92.55
+checkTriggers - calculate
+
+executeBehavior - calculate
+no change in params file
+cursor disp {'y': 0.21700499999999912, 'x': -1.146879999999999}
+ypr: -25.32, 42.13, -92.58
+checkTriggers - calculate
+
+executeBehavior - calculate
+no change in params file
+cursor disp {'y': 0.2080050000000009, 'x': -1.1282049999999983}
+ypr: -25.35, 42.15, -92.55
+checkTriggers - calculate
+
+executeBehavior - calculate
+no change in params file
+cursor disp {'y': 0.2080050000000009, 'x': -1.103444999999999}
+ypr: -25.39, 42.15, -92.49
+checkTriggers - calculate
+
+executeBehavior - calculate
+no change in params file
+cursor disp {'y': 0.2035200000000018, 'x': -1.0788449999999994}
+ypr: -25.43, 42.16, -92.44
+checkTriggers - calculate
+
+executeBehavior - calculate
+no change in params file
+cursor disp {'y': 0.1945800000000004, 'x': -1.103444999999999}
+ypr: -25.39, 42.18, -92.49
+checkTriggers - calculate
+
+executeBehavior - calculate
+no change in params file
+cursor disp {'y': 0.18124499999999988, 'x': -1.1096199999999998}
+ypr: -25.38, 42.21, -92.51
+checkTriggers - calculate
+
+executeBehavior - calculate
+no change in params file
+cursor disp {'y': 0.17682000000000078, 'x': -1.1096199999999998}
+ypr: -25.38, 42.22, -92.53
+checkTriggers - calculate
+
+executeBehavior - calculate
+no change in params file
+cursor disp {'y': 0.18124499999999988, 'x': -1.1219999999999997}
+ypr: -25.36, 42.21, -92.58
+checkTriggers - calculate
+
+executeBehavior - calculate
+no change in params file
+cursor disp {'y': 0.185679999999999, 'x': -1.09728}
+ypr: -25.4, 42.2, -92.54
+checkTriggers - calculate
+
+executeBehavior - calculate
+no change in params file
+cursor disp {'y': 0.17682000000000078, 'x': -1.0666049999999998}
+ypr: -25.45, 42.22, -92.51
+checkTriggers - calculate
+
+executeBehavior - calculate
+no change in params file
+cursor disp {'y': 0.18124499999999988, 'x': -1.0422450000000003}
+ypr: -25.49, 42.21, -92.47
+checkTriggers - calculate
+
+executeBehavior - calculate
+no change in params file
+cursor disp {'y': 0.18124499999999988, 'x': -1.0361799999999992}
+ypr: -25.5, 42.21, -92.43
+checkTriggers - calculate
+
+executeBehavior - calculate
+no change in params file
+cursor disp {'y': 0.17682000000000078, 'x': -1.0422450000000003}
+ypr: -25.49, 42.22, -92.43
+checkTriggers - calculate
+
+executeBehavior - calculate
+no change in params file
+cursor disp {'y': 0.17682000000000078, 'x': -1.048319999999999}
+ypr: -25.48, 42.22, -92.42
+checkTriggers - calculate
+
+executeBehavior - calculate
+no change in params file
+cursor disp {'y': 0.17682000000000078, 'x': -1.0361799999999992}
+ypr: -25.5, 42.22, -92.38
+checkTriggers - calculate
+
+executeBehavior - calculate
+no change in params file
+cursor disp {'y': 0.1945800000000004, 'x': -1.0666049999999998}
+ypr: -25.45, 42.18, -92.4
+checkTriggers - calculate
+
+executeBehavior - calculate
+no change in params file
+cursor disp {'y': 0.1945800000000004, 'x': -1.1096199999999998}
+ypr: -25.38, 42.18, -92.46
+checkTriggers - calculate
+
+executeBehavior - calculate
+no change in params file
+cursor disp {'y': 0.2080050000000009, 'x': -1.1282049999999983}
+ypr: -25.35, 42.15, -92.48
+checkTriggers - calculate
+
+executeBehavior - calculate
+no change in params file
+cursor disp {'y': 0.21250000000000002, 'x': -1.1158049999999986}
+ypr: -25.37, 42.14, -92.41
+checkTriggers - calculate
+
+executeBehavior - calculate
+no change in params file
+cursor disp {'y': 0.22152000000000144, 'x': -1.103444999999999}
+ypr: -25.39, 42.12, -92.38
+checkTriggers - calculate
+
+executeBehavior - calculate
+no change in params file
+cursor disp {'y': 0.22604500000000052, 'x': -1.0849799999999983}
+ypr: -25.42, 42.11, -92.35
+checkTriggers - calculate
+
+executeBehavior - calculate
+no change in params file
+cursor disp {'y': 0.22152000000000144, 'x': -1.1096199999999998}
+ypr: -25.38, 42.12, -92.42
+checkTriggers - calculate
+
+executeBehavior - calculate
+no change in params file
+cursor disp {'y': 0.2351249999999987, 'x': -1.0788449999999994}
+ypr: -25.43, 42.09, -92.38
+checkTriggers - calculate
+
+executeBehavior - calculate
+no change in params file
+cursor disp {'y': 0.2351249999999987, 'x': -1.054405}
+ypr: -25.47, 42.09, -92.34
+checkTriggers - calculate
+
+executeBehavior - calculate
+no change in params file
+cursor disp {'y': 0.22152000000000144, 'x': -1.0727199999999986}
+ypr: -25.44, 42.12, -92.37
+checkTriggers - calculate
+
+executeBehavior - calculate
+no change in params file
+cursor disp {'y': 0.21700499999999912, 'x': -1.0849799999999983}
+ypr: -25.42, 42.13, -92.41
+checkTriggers - calculate
+
+executeBehavior - calculate
+no change in params file
+cursor disp {'y': 0.2035200000000018, 'x': -1.1219999999999997}
+ypr: -25.36, 42.16, -92.5
+checkTriggers - calculate
+
+executeBehavior - calculate
+no change in params file
+cursor disp {'y': 0.2035200000000018, 'x': -1.1158049999999986}
+ypr: -25.37, 42.16, -92.49
+checkTriggers - calculate
+
+executeBehavior - calculate
+no change in params file
+cursor disp {'y': 0.2035200000000018, 'x': -1.1344199999999993}
+ypr: -25.34, 42.16, -92.53
+checkTriggers - calculate
+
+executeBehavior - calculate
+no change in params file
+cursor disp {'y': 0.21250000000000002, 'x': -1.1344199999999993}
+ypr: -25.34, 42.14, -92.54
+checkTriggers - calculate
+
+executeBehavior - calculate
+no change in params file
+cursor disp {'y': 0.21700499999999912, 'x': -1.1158049999999986}
+ypr: -25.37, 42.13, -92.48
+checkTriggers - calculate
+
+executeBehavior - calculate
+no change in params file
+cursor disp {'y': 0.23057999999999962, 'x': -1.1096199999999998}
+ypr: -25.38, 42.1, -92.46
+checkTriggers - calculate
+
+executeBehavior - calculate
+no change in params file
+cursor disp {'y': 0.23968000000000106, 'x': -1.1219999999999997}
+ypr: -25.36, 42.08, -92.49
+checkTriggers - calculate
+
+executeBehavior - calculate
+no change in params file
+cursor disp {'y': 0.2351249999999987, 'x': -1.0911249999999992}
+ypr: -25.41, 42.09, -92.44
+checkTriggers - calculate
+
+executeBehavior - calculate
+no change in params file
+cursor disp {'y': 0.2351249999999987, 'x': -1.09728}
+ypr: -25.4, 42.09, -92.47
+checkTriggers - calculate
+
+executeBehavior - calculate
+no change in params file
+cursor disp {'y': 0.22604500000000052, 'x': -1.0849799999999983}
+ypr: -25.42, 42.11, -92.46
+checkTriggers - calculate
+
+executeBehavior - calculate
+no change in params file
+cursor disp {'y': 0.22604500000000052, 'x': -1.103444999999999}
+ypr: -25.39, 42.11, -92.51
+checkTriggers - calculate
+
+executeBehavior - calculate
+no change in params file
+cursor disp {'y': 0.22604500000000052, 'x': -1.1282049999999983}
+ypr: -25.35, 42.11, -92.56
+checkTriggers - calculate
+
+executeBehavior - calculate
+no change in params file
+cursor disp {'y': 0.21250000000000002, 'x': -1.1219999999999997}
+ypr: -25.36, 42.14, -92.54
+checkTriggers - calculate
+
+executeBehavior - calculate
+no change in params file
+cursor disp {'y': 0.21700499999999912, 'x': -1.1406450000000004}
+ypr: -25.33, 42.13, -92.59
+checkTriggers - calculate
+
+executeBehavior - calculate
+no change in params file
+cursor disp {'y': 0.2035200000000018, 'x': -1.1344199999999993}
+ypr: -25.34, 42.16, -92.57
+checkTriggers - calculate
+
+executeBehavior - calculate
+no change in params file
+cursor disp {'y': 0.1990449999999995, 'x': -1.1219999999999997}
+ypr: -25.36, 42.17, -92.55
+checkTriggers - calculate
+
+executeBehavior - calculate
+no change in params file
+cursor disp {'y': 0.1945800000000004, 'x': -1.1282049999999983}
+ypr: -25.35, 42.18, -92.56
+checkTriggers - calculate
+
+executeBehavior - calculate
+no change in params file
+cursor disp {'y': 0.1901250000000013, 'x': -1.103444999999999}
+ypr: -25.39, 42.19, -92.51
+checkTriggers - calculate
+
+executeBehavior - calculate
+no change in params file
+cursor disp {'y': 0.1945800000000004, 'x': -1.0788449999999994}
+ypr: -25.43, 42.18, -92.44
+checkTriggers - calculate
+
+executeBehavior - calculate
+no change in params file
+cursor disp {'y': 0.1945800000000004, 'x': -1.103444999999999}
+ypr: -25.39, 42.18, -92.49
+checkTriggers - calculate
+
+executeBehavior - calculate
+no change in params file
+cursor disp {'y': 0.185679999999999, 'x': -1.1344199999999993}
+ypr: -25.34, 42.2, -92.51
+checkTriggers - calculate
+
+executeBehavior - calculate
+no change in params file
+cursor disp {'y': 0.185679999999999, 'x': -1.1719199999999985}
+ypr: -25.28, 42.2, -92.54
+checkTriggers - calculate
+
+executeBehavior - calculate
+no change in params file
+cursor disp {'y': 0.17240500000000164, 'x': -1.260819999999999}
+ypr: -25.14, 42.23, -92.63
+checkTriggers - calculate
+
+executeBehavior - calculate
+no change in params file
+cursor disp {'y': 0.16360500000000028, 'x': -1.4244449999999989}
+ypr: -24.89, 42.25, -92.75
+checkTriggers - calculate
+
+executeBehavior - calculate
+no change in params file
+cursor disp {'y': 0.1679999999999994, 'x': -1.713405}
+ypr: -24.47, 42.24, -92.86
+checkTriggers - calculate
+
+executeBehavior - calculate
+no change in params file
+cursor disp {'y': 0.1417800000000015, 'x': -2.2342049999999993}
+ypr: -23.77, 42.3, -93.05
+checkTriggers - calculate
+
+executeBehavior - calculate
+no change in params file
+cursor disp {'y': 0.17240500000000164, 'x': -2.9844999999999997}
+ypr: -22.86, 42.23, -93.23
+checkTriggers - calculate
+
+executeBehavior - calculate
+no change in params file
+cursor disp {'y': 0.26721999999999885, 'x': -3.9239199999999994}
+ypr: -21.84, 42.02, -93.26
+checkTriggers - calculate
+
+executeBehavior - calculate
+no change in params file
+cursor disp {'y': 0.3712800000000017, 'x': -5.064444999999998}
+ypr: -20.73, 41.8, -93.28
+checkTriggers - calculate
+
+executeBehavior - calculate
+no change in params file
+cursor disp {'y': 0.572880000000001, 'x': -6.6542049999999975}
+ypr: -19.35, 41.4, -93.33
+checkTriggers - calculate
+
+executeBehavior - calculate
+no change in params file
+cursor disp {'y': 0.8359199999999994, 'x': -8.353044999999998}
+ypr: -18.03, 40.92, -92.98
+checkTriggers - calculate
+
+executeBehavior - calculate
+no change in params file
+cursor disp {'y': 1.1971200000000002, 'x': -10.510079999999999}
+ypr: -16.52, 40.32, -92.66
+checkTriggers - calculate
+
+executeBehavior - calculate
+no change in params file
+cursor disp {'y': 1.6081799999999984, 'x': -12.84552}
+ypr: -15.04, 39.7, -92.14
+checkTriggers - calculate
+
+executeBehavior - calculate
+no change in params file
+cursor disp {'y': 2.095605, 'x': -15.310125000000001}
+ypr: -13.61, 39.03, -91.54
+checkTriggers - calculate
+
+executeBehavior - calculate
+no change in params file
+cursor disp {'y': 2.6444999999999976, 'x': -17.689645}
+ypr: -12.33, 38.34, -90.84
+checkTriggers - calculate
+
+executeBehavior - calculate
+no change in params file
+cursor disp {'y': 3.214080000000001, 'x': -20.04882}
+ypr: -11.14, 37.68, -90.17
+checkTriggers - calculate
+
+executeBehavior - calculate
+no change in params file
+cursor disp {'y': 3.836845000

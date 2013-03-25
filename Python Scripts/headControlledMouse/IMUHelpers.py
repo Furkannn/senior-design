@@ -2,6 +2,8 @@
 import serial
 import yaml
 import os
+import time
+import sys
 from serial.tools import list_ports
 
 
@@ -50,7 +52,7 @@ class IMUSensorClass:
         raw_data = self.ser.readline()
         raw_data = raw_data.rstrip().rsplit('=')[1].rsplit(',')
 
-        self.currentYpr = YPRDataClass(float(raw_data[0]), float(raw_data[1]), float(raw_data[2]))
+        self.currentYpr = YPRDataClass(-1*float(raw_data[0]), -1*float(raw_data[1]), -1*float(raw_data[2]))
         return self.currentYpr
 
       except:
@@ -58,8 +60,13 @@ class IMUSensorClass:
         pass
 
   def updateNeutralYpr(self):
-    self.neutralYpr = self.getData()
-    print "Updated Neutral YPR values to "
+    #TODO implement neutral zone
+    print "Please hold still for a couple of seconds while the system saves neutral position"
+
+    startTime = time.time()
+    while time.time() - startTime < 3:
+      self.neutralYpr = self.getData()
+      #print "Updated Neutral YPR values to "
     self.neutralYpr.prettyPrint()
 
   def optimizeNeutralYpr(self):
@@ -82,9 +89,6 @@ class IMUSensorClass:
     x_disp = yaw_disp   * self.params['alpha']  +  x_sign * yaw_disp   * yaw_disp   * self.params['beta']
     y_disp = pitch_disp * self.params['alpha']  +  y_sign * pitch_disp * pitch_disp * self.params['beta']
 
-    #TODO implement neutral zone
-    #print x_disp
-    #print y_disp
     self.cursorDisp = {'x': x_disp, 'y': y_disp}
     return
 

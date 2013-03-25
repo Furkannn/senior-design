@@ -60,7 +60,6 @@ class IMUSensorClass:
         pass
 
   def updateNeutralYpr(self):
-    #TODO implement neutral zone
     print "Please hold still for a couple of seconds while the system saves neutral position"
 
     startTime = time.time()

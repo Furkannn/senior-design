@@ -139,5 +139,3 @@ class YPRDataClass:
   def prettyPrint(self):
     print "ypr: " + str(self.yaw) + ", " + str(self.pitch) + ", " + str(self.roll)
 
-
-

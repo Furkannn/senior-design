@@ -74,7 +74,6 @@ class IMUSensorClass:
     return
   
   def calculateCursorDisplacement(self):
-    #yaw_disp*a + x_sign*yaw_disp*yaw_disp*b
 
     self.getData()
     yaw_disp = self.optimizedNeutralYpr.yaw - self.currentYpr.yaw
@@ -88,6 +87,17 @@ class IMUSensorClass:
     
     x_disp = yaw_disp   * self.params['alpha']  +  x_sign * yaw_disp   * yaw_disp   * self.params['beta']
     y_disp = pitch_disp * self.params['alpha']  +  y_sign * pitch_disp * pitch_disp * self.params['beta']
+
+    # account for neutral zone
+    if abs(x_disp) < self.params['neutralZone']:
+      x_disp = 0.0
+    else:
+      x_disp = x_sign * (abs(x_disp) - self.params['neutralZone'])
+
+    if abs(y_disp) < self.params['neutralZone']:
+      y_disp = 0.0
+    else:
+      y_disp = y_sign * (abs(y_disp) - self.params['neutralZone'])
 
     self.cursorDisp = {'x': x_disp, 'y': y_disp}
     return

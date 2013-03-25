@@ -60,6 +60,8 @@ class IMUSensorClass:
         print "Error getting data. Trying again."
         pass
 
+
+
   def updateNeutralYpr(self):
     print "Please hold still for a couple of seconds while the system saves neutral position"
 
@@ -71,15 +73,18 @@ class IMUSensorClass:
     self.optimizedNeutralYpr = self.neutralYpr
     self.cursorDisp = HostDeviceHelpers.CursorClass(0.0, 0.0)
 
+
+
   def optimizeNeutralYpr(self):
     self.optimizedNeutralYpr.yaw   = self.optimizedNeutralYpr.yaw   - self.params['gamma'] * self.cursorDisp.x
     self.optimizedNeutralYpr.pitch = self.optimizedNeutralYpr.pitch - self.params['gamma'] * self.cursorDisp.y
     self.optimizedNeutralYpr = self.neutralYpr
     return
   
+
+
   def calculateCursorDisplacement(self):
 
-    self.getData()
     yaw_disp = self.optimizedNeutralYpr.yaw - self.currentYpr.yaw
     pitch_disp = self.optimizedNeutralYpr.pitch - self.currentYpr.pitch
     roll_disp = self.optimizedNeutralYpr.roll - self.currentYpr.roll
@@ -116,25 +121,32 @@ class IMUSensorClass:
     # update lastModTime
     self.lastModTime = os.stat(self.paramsFilename).st_mtime
 
+
+
   def checkForNewParams(self):
     modTime = os.stat(self.paramsFilename).st_mtime
     if self.lastModTime != modTime:
       self.readParams()
       self.lastModTime = modTime
-    else:
-      print "no change in params file"
+    #else:
+    #  print "no change in params file"
+
+
 
   def printData(self):
-    self.getData().prettyPrint()
+    self.currentYpr.prettyPrint()
 
 
 
 # ======================= IMUDataClass ======================= 
 class YPRDataClass:
+
   def __init__(self, yaw, pitch, roll):
     self.yaw = yaw
     self.pitch = pitch
     self.roll = roll
+
+
 
   def prettyPrint(self):
     print "ypr: " + str(self.yaw) + ", " + str(self.pitch) + ", " + str(self.roll)

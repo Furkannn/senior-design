@@ -26,6 +26,15 @@ class HeadTrackingFSMClass:
     # ======== Calculate State ========
     elif self.currentState == State.Calculate:
       print "checkTriggers - calculate"
+      self.switchToState(State.Move)
+      #self.imuSensor.checkGestures()
+      #self.photoSensor.checkGestures()
+
+
+    # ======== Move State ========
+    elif self.currentState == State.Move:
+      print "checkTriggers - move"
+      self.switchToState(State.Calculate)
 
 
       
@@ -59,6 +68,12 @@ class HeadTrackingFSMClass:
     elif self.currentState == State.Calculate:
       print "\nexecuteBehavior - calculate"
       self.imuSensor.checkForNewParams()
+      self.imuSensor.getData()
+
+
+    # ======== Move State ========
+    elif self.currentState == State.Move:
+      print "\nexecuteBehavior - move"
       self.imuSensor.optimizeNeutralYpr()
       self.imuSensor.calculateCursorDisplacement()
       self.hostDevice.displaceCursor(self.imuSensor.cursorDisp)

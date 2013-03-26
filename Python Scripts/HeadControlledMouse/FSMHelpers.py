@@ -74,9 +74,15 @@ class HeadTrackingFSMClass:
     # ======== Move State ========
     elif self.currentState == State.Move:
       print "\nexecuteBehavior - move"
-      self.imuSensor.optimizeNeutralYpr()
       self.imuSensor.calculateCursorDisplacement()
-      self.hostDevice.displaceCursor(self.imuSensor.cursorDisp)
+      actualCursorMovement = self.hostDevice.displaceCursor(self.imuSensor.cursorDisp)
+      self.imuSensor.updateOnHostScreenCurrentYpr(actualCursorMovement)
+      self.imuSensor.optimizeNeutralYpr()
+
+      self.imuSensor.optimizedNeutralYpr.prettyPrint()
+      self.imuSensor.currentYpr.prettyPrint()
+      self.imuSensor.onScreenCurrentYpr.prettyPrint()
+      #print str(self.imuSensor.cursorDisp.x) + "  " + str(self.imuSensor.cursorDisp.y)
 
 
     # reset switched

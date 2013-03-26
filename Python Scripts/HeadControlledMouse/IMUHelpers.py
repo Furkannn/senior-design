@@ -72,13 +72,16 @@ class IMUSensorClass:
     self.neutralYpr.prettyPrint()
     self.optimizedNeutralYpr = self.neutralYpr
     self.cursorDisp = HostDeviceHelpers.CursorClass(0.0, 0.0)
+    self.onScreenCurrentYpr = YPRDataClass(self.currentYpr.yaw, self.currentYpr.pitch, self.currentYpr.roll)
 
 
 
   def optimizeNeutralYpr(self):
-    self.optimizedNeutralYpr.yaw   = self.optimizedNeutralYpr.yaw   - self.params['gamma'] * self.cursorDisp.x
-    self.optimizedNeutralYpr.pitch = self.optimizedNeutralYpr.pitch - self.params['gamma'] * self.cursorDisp.y
-    self.optimizedNeutralYpr = self.neutralYpr
+    #self.optimizedNeutralYpr.yaw   = self.optimizedNeutralYpr.yaw   - self.params['gamma'] * self.cursorDisp.x
+    #self.optimizedNeutralYpr.pitch = self.optimizedNeutralYpr.pitch - self.params['gamma'] * self.cursorDisp.y
+    self.optimizedNeutralYpr.yaw   = self.optimizedNeutralYpr.yaw   + self.params['gamma'] * (self.onScreenCurrentYpr.yaw   - self.optimizedNeutralYpr.yaw)**3
+    self.optimizedNeutralYpr.pitch = self.optimizedNeutralYpr.pitch + self.params['gamma'] * (self.onScreenCurrentYpr.pitch - self.optimizedNeutralYpr.pitch)**3
+    #self.optimizedNeutralYpr = self.neutralYpr
     return
   
 
@@ -110,6 +113,18 @@ class IMUSensorClass:
 
     self.cursorDisp = HostDeviceHelpers.CursorClass(x_disp, y_disp)
     return
+
+
+
+  def updateOnHostScreenCurrentYpr(self, actualMovement):
+
+    # if there was movement along the x - update yaw
+    if actualMovement.x != 0:
+      self.onScreenCurrentYpr.yaw = self.currentYpr.yaw
+    
+    # if there was movement along the y - update pitch
+    if actualMovement.y != 0:
+      self.onScreenCurrentYpr.pitch = self.currentYpr.pitch
 
 
 

@@ -74,8 +74,3 @@ void executeBehavior(int elapsed, char state, int switched) {
   } // behaviors
 }
 
-//================================================================================================
-
-
-
-

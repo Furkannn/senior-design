@@ -1,0 +1,36 @@
+!!python/object/apply:numpy.core.multiarray._reconstruct
+args:
+- !!python/name:numpy.ndarray ''
+- !!python/tuple [0]
+- b
+state: !!python/tuple
+- 1
+- !!python/tuple [2, 80]
+- !!python/object/apply:numpy.dtype
+  args: [f8, 0, 1]
+  state: !!python/tuple [3, <, null, null, null, -1, -1, 0]
+- false
+- !!binary |
+  rdTCpYQhMkBW9KmxX7UwQOpIGeeXVihAsZgnYd5qI0D3rGsi4M0RQM4EottuaQZAoiIv4GuO8z96
+  oPRabpfPP1/fZJe0g/A/IIPCz2t34L9aJEovHHQIwPb0iaPjgdW/E41pXsH3579u05yfOED3P8Y4
+  E7GTfQtAkylmXvegwr9/FC7MYToAwG6YSoRGuPW/yiKLoKJhEsAKLdDmStYSwADqx+gIgw3ATdQT
+  gsYWE8AvTV5qGWoJwF6S6UhRhQrAmnAt+5bSD8CXdjvusE4FwPNBHpKIyfQ/dX8zC5G2+T+A0Foa
+  dwn2v928/6DatBzAZWV6CvlVK8CcTq1yrEw1wE2gOtw7dkXAa/DQGxRGXcBlFxWUMmZuwFZwBa8i
+  kH7AKiSl5974iMCmin0TqmaRwOC0kEUgRJbAS5aQWL7pmcDIfNKO3ymbwGYNF91rKZnAGtDYtvKM
+  lMDjFySnrtuJwKaYTLG5SnbAXVy1K7YxQ0DyPeRCo6l1QN0olgx3SIFADOCTOJB4hkAyUSuAdjWI
+  QN5PjXguF4lAO+q9OdP6h0CSWDBVdvaFQLTprzGIsYRAHr2bNzK4gkBGzPqfFQeBQMPk+qXgQH9A
+  rQPjkPa6fEAFVIPjjWt6QDYv/gHHX3hAHf2zbWJgdkD8o0NmEeh0QFaIBcoFanNAkvAARcK2cUBW
+  wRYB/QtwQEq9ldT4eGxAe8jmmsHWaUDrMzEq8dBpQEoqPJ9uxWdAWasadbCSZkB6Wqe3Fl9kQGzz
+  1umdr2BArjHCVlLlXEChFJx/DpBXQD5m8TVck1NAmJaxEwuLT0BFIiL+PzFLQHZGsWfZJUlA2JqO
+  RulAREBLNUfivgFBQAlLm6FS4iHA2K9XmG+iJcDb1+6tXiUqwBJq8TvQhCvA2wFObvnlLcCaSMJG
+  +LAswJumcOwgUCbAQEjFUnj5KcAaGYx9oJMjwHDwnbqM0CfAUJqMv9eXJ8CTSaNDAFofwKURFyFD
+  UhnAKMmZ15E7BMAKolNBDyAMQNEVS17rxRBAwPDFfC3NHUBLk2BeaM4eQF1CoE/zLRhA+DMFChMx
+  E0AwFAfRQWkSQDxotI86twRAggZQ+DKa/j/qPaoXMWMBQGPT29rd+QBAn5FR5Opn8z8fzZXngPfy
+  P92MpSdeHNK/bt1DKQMV47+zazhDoV2ovzZ9DwCzxPs/MvX+RR9f9D/K96jLQjYMwCuNZCofwTrA
+  +7Lo1bQASsCLVjXH68dPwPJFht+RQEzA6rRb0REeRcBYCHPp3fJAwCNq1qGmDDHAKICVBkfDK8BO
+  qZRa7NVCwPliIUUST0fAFwroCFyaR8BzkxuSBebkP+Ym/FsiJEJAEGX9/zghUEDOxpaUmeNXQFIH
+  DAvqyV5Au1ySSD0SYUD+xvMxE2liQLIxeDwXG2FAe5bQjt3DXUDCBk2MF4laQIZ1cKFpMFdAUMXt
+  a7OFV0COKM/BczNUQIZh/BVTpktAJgiD5WUfQEDq6HbwfSsqQMbv4xDcTxVA8DCIKVFW9z9GEyB0
+  jLXxv/Dw3MubRiDAu4SX4gVAMMDNBWrIN20swH3AxvVlDy/AfspJ6f+ePcBv7FU/mGI1wKO1/Net
+  Iz3AGvZJ40QARMBbImaC2SVCwEnup0h7j0XA7OVHlTHOQ8DczLenSm1CwD8wQcj/cUTAbecICDC+
+  QMCH77hR7NtAwOucyadVfjjANxoxvK7hMMA=

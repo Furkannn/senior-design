@@ -1,5 +1,4 @@
 from numpy import mean,cov,double,cumsum,dot,linalg,array,rank
-from pylab import plot,subplot,axis,stem,show,figure
 
 def princomp(A, dims):
         M = (A-mean(A.T,axis=1)).T # subtract the mean (along columns)

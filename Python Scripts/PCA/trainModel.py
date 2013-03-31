@@ -1,9 +1,8 @@
-from numpy import mean,cov,double,cumsum,dot,linalg,array,rank
-from pylab import plot,subplot,axis,stem,show,figure
 import pca
 import yaml
 import numpy as np
 import sys
+import yamlHelpers as yml
 
 
 # model parameters
@@ -14,16 +13,13 @@ window = 80
 
 # ========  read in training data  ========
 # read in left nods file
-f = open('pca_data_training_left_nod.yaml', 'r')
-pcaInputLeft = yaml.load(f)
+pcaInputLeft = yml.fetch('pca_data_training_left_nod.yaml')
 (inputDimsLeft, samplesLeft) = pcaInputLeft.shape
-f.close()
 
 # read in right nods file
-f = open('pca_data_training_right_nod.yaml', 'r')
-pcaInputRight = yaml.load(f)
+pcaInputRight = yml.fetch('pca_data_training_right_nod.yaml')
 (inputDimsRight, samplesRight) = pcaInputRight.shape
-f.close()
+
 
 # check input dimension consistency across training sets
 if inputDimsLeft != inputDimsRight:
@@ -34,34 +30,27 @@ else:
 
 
 # ========  concatenate training files  ========
-temp = []
-for i in range(0, inputDims):
-  temp.append([0.])
-concatenatedPcaInput = np.array(temp)
+concatenatedPcaInput = []
 
 for s in range(0, samplesLeft):
-  sample = np.reshape(pcaInputLeft[:, s], (inputDims, 1))
-  concatenatedPcaInput = np.hstack([concatenatedPcaInput, sample])
+  sample = pcaInputLeft[:, s].tolist()
+  concatenatedPcaInput.append(sample)
 
 for s in range(0, samplesRight):
-  sample = np.reshape(pcaInputRight[:, s], (inputDims, 1))
-  concatenatedPcaInput = np.hstack([concatenatedPcaInput, sample])
+  sample = pcaInputRight[:, s].tolist()
+  concatenatedPcaInput.append(sample)
 
-pcaInput = np.delete(concatenatedPcaInput, 0, axis=1)
+pcaInput = np.transpose(np.array(concatenatedPcaInput))
 
 
 # ========  do PCA  ========
-
 coeff, score, latent = pca.princomp(pcaInput.T, dims)
+print np.mean(latent)
 
 leftScore = score[:, 0:samplesLeft]
-print leftScore.shape
 rightScore = score[:, samplesLeft:samplesLeft+samplesRight]
-print rightScore.shape
 
-f = open("pcaTrainingCoeff.yaml", "w")
-yaml.dump(coeff, f)
-f.close()
+yml.save('pcaTrainingCoeff.yaml', coeff)
 
 
 # ========  find average of training sets  ========
@@ -76,10 +65,7 @@ for peakNumber in range(0, numberOfNods):
 leftScore = np.mean(np.array(leftScoreAverage), axis=0)
 
 # save left score
-f = open("trained_left_nod_score.yaml", 'w')
-#yaml.dump(leftScore.tolist(), f)
-yaml.dump(leftScore, f)
-f.close()
+yml.save('trained_left_nod_score.yaml', leftScore)
 
 # find peaks in right score
 rightScoreAverage = []
@@ -92,9 +78,5 @@ for peakNumber in range(0, numberOfNods):
 rightScore = np.mean(np.array(rightScoreAverage), axis=0)
 
 # save right score
-f = open("trained_right_nod_score.yaml", 'w')
-#yaml.dump(rightScore.tolist(), f)
-yaml.dump(rightScore, f)
-f.close()
-
+yml.save('trained_right_nod_score.yaml', leftScore)
 

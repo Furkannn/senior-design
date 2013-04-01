@@ -1,5 +1,19 @@
+import yaml
 import serial
 from serial.tools import list_ports
+
+
+def fetchYaml(filename):
+  f = open(filename, 'r')
+  data = yaml.load(f)
+  f.close()
+  return data
+
+
+def saveYaml(filename, data):
+  f = open(filename, 'w')
+  data = yaml.dump(data, f)
+  f.close()
 
 
 def connectToAvailablePort(baudrate=57600, portName='/dev/ttyACM0', findPort=True, debug=False):

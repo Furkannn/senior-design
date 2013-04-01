@@ -1,8 +1,7 @@
 import pca
-import yaml
 import numpy as np
 import sys
-import yamlHelpers as yml
+import acd_file_io_lib as io
 
 
 # model parameters
@@ -13,11 +12,11 @@ window = 80
 
 # ========  read in training data  ========
 # read in left nods file
-pcaInputLeft = yml.fetch('pca_data_training_left_nod.yaml')
+pcaInputLeft = io.fetchYaml('training_data_left_nod.yaml')
 (inputDimsLeft, samplesLeft) = pcaInputLeft.shape
 
 # read in right nods file
-pcaInputRight = yml.fetch('pca_data_training_right_nod.yaml')
+pcaInputRight = io.fetchYaml('training_data_right_nod.yaml')
 (inputDimsRight, samplesRight) = pcaInputRight.shape
 
 
@@ -50,7 +49,7 @@ print np.mean(latent)
 leftScore = score[:, 0:samplesLeft]
 rightScore = score[:, samplesLeft:samplesLeft+samplesRight]
 
-yml.save('pcaTrainingCoeff.yaml', coeff)
+io.saveYaml('pcaTrainingCoeff.yaml', coeff)
 
 
 # ========  find average of training sets  ========
@@ -65,7 +64,7 @@ for peakNumber in range(0, numberOfNods):
 leftScore = np.mean(np.array(leftScoreAverage), axis=0)
 
 # save left score
-yml.save('trained_left_nod_score.yaml', leftScore)
+io.saveYaml('trained_left_nod_score.yaml', leftScore)
 
 # find peaks in right score
 rightScoreAverage = []
@@ -78,5 +77,5 @@ for peakNumber in range(0, numberOfNods):
 rightScore = np.mean(np.array(rightScoreAverage), axis=0)
 
 # save right score
-yml.save('trained_right_nod_score.yaml', leftScore)
+io.saveYaml('trained_right_nod_score.yaml', leftScore)
 

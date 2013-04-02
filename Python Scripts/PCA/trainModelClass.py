@@ -86,6 +86,7 @@ class trainModelClass():
     io.saveYaml('pca_scores.yaml', setClassAverages)
     
     # plot all scores
+    print "plotting"
     for setClass in setClassAverages:
       fig = plt.figure()
       ax = fig.add_subplot(111)
@@ -94,5 +95,4 @@ class trainModelClass():
       plt.savefig(filename)
       os.system("eog " + filename)
     
-
 

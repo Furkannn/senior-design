@@ -28,6 +28,7 @@ print("Go!")
 while 1:
   #t = str(time.time())
   raw_data = ser.readline()
+  print raw_data
   #f.write(t + "\t" + raw_data)
   f.write(raw_data)
 

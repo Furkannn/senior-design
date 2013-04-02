@@ -10,6 +10,12 @@ class recordTrainingSetsClass():
     self.portname = portname
     self.numberOfSets = numberOfSets
 
+  def recordLeftNodTrainingSet(self):
+    self.recordTrainingSet("left_nod")
+
+  def recordRightNodTrainingSet(self):
+    self.recordTrainingSet("right_nod")
+
   def recordTrainingSet(self, setClass):
 
     # recording params
@@ -38,7 +44,6 @@ class recordTrainingSetsClass():
     setsCollected = 0
 
     while setsCollected <= self.numberOfSets:
-      print "."
       raw_data = ser.readline()
       f.write(raw_data)
       if time.time() - nodTime > betweenNodsTime:
@@ -47,9 +52,3 @@ class recordTrainingSetsClass():
         if setsCollected <= self.numberOfSets:
           print "NOD - " + str(setsCollected)
 
-
-  def recordLeftNodTrainingSet(self):
-    self.recordTrainingSet("left_nod")
-
-  def recordRightNodTrainingSet(self):
-    self.recordTrainingSet("right_nod")

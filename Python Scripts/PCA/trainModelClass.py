@@ -2,84 +2,97 @@
 import acd_file_io_lib as io
 import time
 import numpy as np
+import matplotlib.pyplot as plt
+import pca
+import sys
+import os
 
 
 class trainModelClass():
-    def __init__(self, dims=2, numberOfNods=10, window=80):
-        self.dims = dims
-        self.numberOfNods = numberOfNods
-        self.window = window
+  def __init__(self, dims=2, numberOfNods=10, window=80):
+    self.dims = dims
+    self.numberOfNods = numberOfNods
+    self.window = window
 
-    def trainModel(self, setClasses=['left_nod', 'right_nod']):
+  def trainModel(self, setClasses=['left_nod', 'right_nod']):
 
-        # ========  read in training data  ========
-        # read in left nods file
-        pcaInputLeft = io.fetchYaml('training_data_left_nod.yaml')
-        (inputDimsLeft, samplesLeft) = pcaInputLeft.shape
+    # ========  read in training data  ========
+    trainedData = []
+    trainedDataDims = []
+    trainedDataDatapoints = []
 
-        # read in right nods file
-        pcaInputRight = io.fetchYaml('training_data_right_nod.yaml')
-        (inputDimsRight, samplesRight) = pcaInputRight.shape
+    for setClassIndex in range(0, len(setClasses)):
+      setClassFilename = 'training_data_' + str(setClasses[setClassIndex]) + '.yaml'
+      trainedData.append(io.fetchYaml(setClassFilename))
+      (d, dp) = trainedData[setClassIndex].shape
+      trainedDataDims.append(d)
+      trainedDataDatapoints.append(dp)
 
-
-        # check input dimension consistency across training sets
-        if inputDimsLeft != inputDimsRight:
-            print "Number of dimensions in the training sets do not match"
-            sys.exit()
-        else:
-            inputDims = inputDimsLeft
-
-
-        # ========  concatenate training files  ========
-        concatenatedPcaInput = []
-
-        for s in range(0, samplesLeft):
-            sample = pcaInputLeft[:, s].tolist()
-            concatenatedPcaInput.append(sample)
-
-        for s in range(0, samplesRight):
-            sample = pcaInputRight[:, s].tolist()
-            concatenatedPcaInput.append(sample)
-
-        pcaInput = np.transpose(np.array(concatenatedPcaInput))
+    # check input dimension consistency across training sets
+    inputDims = trainedDataDims[0]
+    for d in trainedDataDims:
+      if inputDims != d:
+        print "Number of dimensions in the training sets do not match"
+        sys.exit()
 
 
-        # ========  do PCA  ========
-        coeff, score, latent = pca.princomp(pcaInput.T, self.dims)
-        print np.mean(latent)
+    # ========  concatenate training files  ========
+    pcaInput = []
 
-        leftScore = score[:, 0:samplesLeft]
-        rightScore = score[:, samplesLeft:samplesLeft+samplesRight]
+    for setClassIndex in range(0, len(trainedData)):
+      for colIndex in range(0, trainedDataDatapoints[setClassIndex]):
+        dp = trainedData[setClassIndex][:, colIndex].tolist()
+        pcaInput.append(dp)
 
-        io.saveYaml('pcaTrainingCoeff.yaml', coeff)
+    pcaInput = np.transpose(np.array(pcaInput))
 
 
-        # ========  find average of training sets  ========
-        # find peaks in left score
-        leftScoreAverage = []
-        for peakNumber in range(0, self.numberOfNods):
-            peakLocation = np.argmax(np.absolute(leftScore))%samplesLeft
-            columnsToDelete = range(peakLocation-self.window/2,
-                    peakLocation+self.window/2)
-            leftScoreAverage.append(leftScore[:, columnsToDelete])
-            leftScore = np.delete(leftScore, columnsToDelete, 1)
+    # ========  do PCA  ========
+    coeff, score, latent = pca.princomp(pcaInput.T, self.dims)
+    varience_covered = np.sum(latent[0:self.dims]) / np.sum(latent)
 
-        leftScore = np.mean(np.array(leftScoreAverage), axis=0)
+    startingIndex = 0
+    endingIndex = 0
+    setClassScores = {}
 
-        # save left score
-        io.saveYaml('trained_left_nod_score.yaml', leftScore)
+    for setClassIndex in range(0, len(setClasses)):
+      startingIndex = endingIndex
+      endingIndex = endingIndex + trainedDataDatapoints[setClassIndex]
+      setClassScores[setClasses[setClassIndex]] = score[:, startingIndex:endingIndex-1]
 
-        # find peaks in right score
-        rightScoreAverage = []
-        for peakNumber in range(0, self.numberOfNods):
-            peakLocation = np.argmax(np.absolute(rightScore))%samplesRight
-            columnsToDelete = range(peakLocation-self.window/2,
-                    peakLocation+self.window/2)
-            rightScoreAverage.append(rightScore[:, columnsToDelete])
-            rightScore = np.delete(rightScore, columnsToDelete, 1)
+    io.saveYaml('pcaTrainingCoeff.yaml', coeff)
 
-        rightScore = np.mean(np.array(rightScoreAverage), axis=0)
 
-        # save right score
-        io.saveYaml('trained_right_nod_score.yaml', leftScore)
+    # ========  find average of training sets  ========
+    # find peaks in left score
+    setClassAverages = {}
+    for setClassIndex in range(0, len(setClasses)):
+
+      setClassAverage = []
+      setClassScore = setClassScores[setClasses[setClassIndex]]
+
+      for peakNumber in range(0, self.numberOfNods):
+
+        (d, dp) = setClassScore.shape
+        peakLocation = np.argmax(np.absolute(setClassScore))%dp
+        columnsInWindow = range(peakLocation-self.window/2, peakLocation+self.window/2)
+        setClassAverage.append(setClassScore[:, columnsInWindow])
+        setClassScore = np.delete(setClassScore, columnsInWindow, 1)
+       
+      # compute average
+      setClassAverages[setClasses[setClassIndex]] = np.mean(np.array(setClassAverage), axis=0)
+
+    # save scores
+    io.saveYaml('pca_scores.yaml', setClassAverages)
+    
+    # plot all scores
+    for setClass in setClassAverages:
+      fig = plt.figure()
+      ax = fig.add_subplot(111)
+      ax.plot(np.transpose(setClassAverages[setClass]))
+      filename = str(setClass) + '.png'
+      plt.savefig(filename)
+      os.system("eog " + filename)
+    
+
 

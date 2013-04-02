@@ -5,6 +5,12 @@ import numpy
 
 class formatTrainingSetsClass():
 
+  def formatLeftNodTrainingSet(self):
+    self.formatTrainingSet("left_nod")
+
+  def formatRightNodTrainingSet(self):
+    self.formatTrainingSet("right_nod")
+
   def formatTrainingSet(self, setClass):
 
     # recording params
@@ -36,9 +42,3 @@ class formatTrainingSetsClass():
     Ifile.close()
     print("File successfully formatted")
 
-
-  def formatLeftNodTrainingSet(self):
-    self.formatTrainingSet("left_nod")
-
-  def formatRightNodTrainingSet(self):
-    self.formatTrainingSet("right_nod")

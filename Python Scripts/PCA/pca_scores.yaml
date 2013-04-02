@@ -1,0 +1,72 @@
+left_nod: !!python/object/apply:numpy.core.multiarray._reconstruct
+  args:
+  - &id001 !!python/name:numpy.ndarray ''
+  - !!python/tuple [0]
+  - b
+  state: !!python/tuple
+  - 1
+  - !!python/tuple [2, 80]
+  - !!python/object/apply:numpy.dtype
+    args: [f8, 0, 1]
+    state: !!python/tuple [3, <, null, null, null, -1, -1, 0]
+  - false
+  - !!binary |
+    XdXrwutJJsCW1mSyPDwvwPPoUQYlWS/ARq0+9IvGMMAeIlQiupsvwO1Fn+gqlzDAP3lv0IH7McC3
+    UPydoKcywN6CfjxghTDAuIO0ESZpLMBECAfGLN8kwE4/HcC5GiHATiwRF6M2IMBGVpuGaxEDwEBc
+    khrMYrw/zj1vFEoy6z8G5+2Vni7NvwZs7Ge7vdc/cKFNmnp96z82eGgpdf7YPy3G36QfngtA1vSk
+    tGWt+j9iHJgZGsAGwPODWKw4fxTAgyJfEr7RAsCh52l+lTQTwACDQa5ZjCTAWlZm1NuPNMDJh/bO
+    XK9DwALxJV+U6E3AWCtH9ba1VMDaaaFy+odewEJLinq6lmnAhclDdoJLecDDKzUlV4qDwGt1jrQR
+    GY3AAU8qx4rOk8C/22ivGbSYwAMy12LBF53Af7ifNudSoMBz1fFr+TahwDJpE4uRq6DA/hpidoXJ
+    ncCu4kx7N9yXwC3AOPGYX5HAdao9E8PbhcA7oRZis61wwKbXkF/Kq1tAQ3iKNUq7e0CpTI4t2f6F
+    QODGVZLc24xAeiH1mb21kEA/O7VkgkOSQFZtGR479ZJAI0eIqhbLkkAodLkEICiSQFIHGMuxuJFA
+    gvyJWIFokUDeBygjhsSQQFDVk+hAJI9AMqG08dWrjED2IN5AEjWKQERsS59AFYhA4qrtkCFIhkA1
+    5mNdzXmEQPDvD728mYJAP7V41+VUgEA1CCpSFc58QGk3wYD873hABTqWk7xjdUBns76ya3JyQLjI
+    Jy7aFXBAQSUKH5nUaEBS7SHLFG5lQBQt2X3rn2FADe6sFKqxXED6h1urjNxXQL4EtlZkJVFAyEZ+
+    /sxeSEAAl5DEmMZGQKr9Hl7poB1AyJYIurg6JkC7+wPgW4EnQHa3H4gKXipAFxVIzDr+J0A+GhAa
+    CXokQG7CRXyPeCJADEtvnpLqIEAlncLCqsUfQFttG5akSBxAGtFno49pHkBIumSMt4QaQDLfRbwf
+    ixhAgGSV0IAUFEB2NOIXN48TQNv4tCjDDA9ACWgZLOFAEEAWYH+QZ/8OQBWnXM6AmBZANb3gnK+D
+    HUD4FOCU/3oTQHpL2wD3AxlA/dgdHguIFECwRjLKQk4UQKrehcKa+w5AnRQC1eV/D0DTufsti68O
+    QJq9QPjXUhlA6svNNdBEGUAd5pTGlXctQKlA+HyWJDVAux2giwBNPkBDzYNlPDxGQDp407m+dFFA
+    O25A95gbWECNIS/gnJteQF7jsZW2f2FAuOwGtI+yYEBmgW5d2jNfQANbUYAMc2FAcMrKg84/ZkAo
+    ZqOA3MhoQNK2ofLgTmtAUo6ZUYZBa0Ba9nj1zJNoQMx0h5eAimRAa0DRWfQNYEDqjBXvJPtUQCDJ
+    sq5CF0tAC76XELqnJkDIDPW4lRs6wFq4G2F1CE3ASIvTiQ9/WMAFUcY9vr9gwIpPzJjNTmPAhB6r
+    WSlGY8CvXRwSnfNiwG0VixPZAmLAczvkkQEuYcBoxzZX0u1ewP47mh/Aj1zA02Vs5HX/WsAqK9ma
+    H35bwBYjNjrdRFvAI41NHlFDV8DQ6kk1BPJYwGqBz7r8C1rA1ZrTPLirV8A3MUF0ZJNWwA2zmjZj
+    T1XAcm5Tukk3VMDAlQXB8EFVwG4oowhaIlLAJlo6qaFIUcDSL4LuRW1KwCqrPNj5N0XAVPbzCGCR
+    RMAOEuFaUyhAwNvrZRKBxjnAT8XqTatjOMA=
+right_nod: !!python/object/apply:numpy.core.multiarray._reconstruct
+  args:
+  - *id001
+  - !!python/tuple [0]
+  - b
+  state: !!python/tuple
+  - 1
+  - !!python/tuple [2, 80]
+  - !!python/object/apply:numpy.dtype
+    args: [f8, 0, 1]
+    state: !!python/tuple [3, <, null, null, null, -1, -1, 0]
+  - false
+  - !!binary |
+    OvjKIXY5K0BKEZqjwnIqQFZA0x9DoihA6qCzGlb8J0Dq5+z1R9QpQCPQi39YsChAD7dEOrOEIkBg
+    4LFuN0gkQKybqJdlxCVA6CAsQy9FKUAKwiEznUosQJDDvAv/RTFAN9kqHFXkMkDG6fQkxPUyQGVg
+    lOPI5y1Ai2ZKi1FrLkAKV77SpcYuQH6fRt9IsjBAVUyZZW6NLkAoPUD05SwnQDoz+jn5YyZA4mx5
+    FmobKUAbYlaxAr0nQIbI9h+eiyFAAqacVbNTHUDobU5MPV0gQKaIdPK0/iRAiwIgq+DZKkDdYo2y
+    5KAvQFg0gocyizBA9VYJ6DayOUDaQlpcVxtDQMAp+lkw81ZAcnR2AskEbUBrxpIcZB99QH2b0koc
+    xYZAc8kdmD3DjkCU5qpmNW6TQK429NYlU5dAJm5rSN7EmkD27lYkTKWcQMDy1GWg25pASKqJASa/
+    l0DEztm38wuUQJgpQ2O5tI5AGAHOUUjGg0CF+KhxOtpwQMjGaZ9leEXAT/CBmMPMcMCjCLfCVbB+
+    wI208Ao0IoXAKmVK3o2UiMCYEVWIhVOLwEJrY6sSPI3AxRKrgcP0jcDOdASqKDSOwL5FIV5wEo7A
+    YBzHpEr+jMANLKJomuuLwGiyhjO5yYrAwFx4bMNBicDzE8mb+haHwDqvoTsguYTArpSRMuFbg8D3
+    SSI/a++BwLlusq8KKoDAE6nkIkjge8Bjtk+FAu13wOJAyG2bpXTAzToFmJ6SccCKbjf4BXJuwJ4j
+    lGpFE2jArfCqSXsRZcDF1KbABulhwKOrJlWD/V3AElatng4hWcCcktzu0eVVwP3MLRmkn1LAzbyl
+    Wh/5T8AVZEycC7BJwB7qxqWb0ClAiaNX4HF2KEA7O/lF2y0kQAEzOLMp/yBAeHufgZfGHEDtDfnO
+    ApoUQBVs3Z1AWA5AiKT6sNhpE0Dx4vSxHnYQQD5I3VYqkQFA0yYx9j0j1z99ppELCZ7RvwDWcdlL
+    dN2/msAV0JgP9L8D2oxRy4Xxv0ymQO1eSQXAlnwmt9KbEsCadOS62t0QwMTnN28l+wPAygXHoNbA
+    A8B4OBtuR8f8v0iSXX0HIvy/IDovJs0T/L/8ByVWxB32v2q9BZ7EDN0/LcVbyY5fA0C943Z3TE8Q
+    QBK02irU8RNAJCk2W2cQEkCPW6BwzCIGQHRU0SMz6whACH2eWlt/HUClqS8AB7E6QLc42qX7TVRA
+    LX44PU6kYkClXtIRuERqQLY7T7706W9AiLfu+6j/c0BD3JRKJAh1QEciuGN5GXVAbsdCFzz3b0AG
+    mgsoZoVrQCjDIb7+J19AKlKSj4tcWEC9avHYhC84QOJBOTCWJVfA1wbQgMjPZcBucKX8XZdswJ5n
+    7dSkB3DAZGfmw5JTcMBqlddd9OpvwKJI20uAwG7AE6i3auJEbcDC4On3sshqwF55kxCE0WjATgLB
+    V9mRZcA7X0BjfARiwFQnypc0VWDAus40Rno1XMAIcNLWvH1WwC7WJsDTYFDAPU1+gtAvQcC0OoLR
+    slgwwAY8VdLIngXAhUqH5cZZJEBNrw40IyosQItQrBhiqiNAtuK3EVa4BkB226ottaL+Pz2+PvOO
+    FRTAmBkSB2M5KMBuToqw70s2wOAtJzN37jnAzW3VR6ncOsB94jXwUtA6wLUUI7cdYTbAqOIYSCpT
+    K8DdCocrwjUGwBwev8FJlhVA1xwvYLUtMEA=

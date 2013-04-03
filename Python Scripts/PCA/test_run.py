@@ -3,6 +3,7 @@
 import recordTrainingSetsClass as recorder
 import formatTrainingSetsClass as formatter
 import trainModelClass as trainer
+import detectGesturesClass as detector
 import argparse
 
 
@@ -15,20 +16,30 @@ parser.add_argument('--record', '-r',
 parser.add_argument('--train', '-t',
     action="store_true")
 
+parser.add_argument('--detect', '-d',
+    action="store_true")
+
 args = parser.parse_args()
 
-r = recorder.recordTrainingSetsClass()
-f = formatter.formatTrainingSetsClass()
-t = trainer.trainModelClass()
 
 if args.record:
+  r = recorder.recordTrainingSetsClass()
+  f = formatter.formatTrainingSetsClass()
+
   r.recordLeftNodTrainingSet()
   r.recordRightNodTrainingSet()
   f.formatLeftNodTrainingSet()
   f.formatRightNodTrainingSet()
 
 if args.train:
+  t = trainer.trainModelClass()
   t.trainModel()
 
+if args.detect:
+  d = detector.detectGesturesClass()
+  while 1:
+    d.detectGestures()
 
+if not args.train and not args.record and not args.detect:
+  print "you did not provide any command line arguments"
 

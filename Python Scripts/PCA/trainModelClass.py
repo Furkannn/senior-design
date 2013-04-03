@@ -60,7 +60,12 @@ class trainModelClass():
       endingIndex = endingIndex + trainedDataDatapoints[setClassIndex]
       setClassScores[setClasses[setClassIndex]] = score[:, startingIndex:endingIndex-1]
 
-    io.saveYaml('pcaTrainingCoeff.yaml', coeff)
+    pca_params ={}
+    pca_params['coeff'] = coeff
+    pca_params['latent'] = latent
+    pca_params['dims'] = self.dims
+    pca_params['window'] = self.window
+    io.saveYaml('pca_params.yaml', pca_params)
 
 
     # ========  find average of training sets  ========
@@ -82,16 +87,22 @@ class trainModelClass():
       # compute average
       setClassAverages[setClasses[setClassIndex]] = np.mean(np.array(setClassAverage), axis=0)
 
+    # normalize
+    for setClass in setClassAverages:
+      a = setClassAverages[setClass]
+      row_sums = np.absolute(a).sum(axis=1)
+      setClassAverages[setClass] = a / row_sums[:, np.newaxis]
+
     # save scores
     io.saveYaml('pca_scores.yaml', setClassAverages)
-    
+
     # plot all scores
     print "plotting"
     for setClass in setClassAverages:
       fig = plt.figure()
       ax = fig.add_subplot(111)
       ax.plot(np.transpose(setClassAverages[setClass]))
-      filename = str(setClass) + '.png'
+      filename = 'graph_' + str(setClass) + '.png'
       plt.savefig(filename)
       os.system("eog " + filename)
     

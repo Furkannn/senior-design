@@ -5,45 +5,23 @@ import os
 import time
 import sys
 from serial.tools import list_ports
-import HostDeviceHelpers
+import HelperClasses
+import acd_file_io_lib as io
 
 
 # ======================= IMUSensorClass ======================= 
 class IMUSensorClass:
 
   # establish connection
-  def __init__(self, baudrate = 57600, portName = 'na'):
+  def __init__(self, baudrate = 57600, portName = '/dev/ttyUSB0'):
 
     # get paramters
     self.paramsFilename = 'HeadTrackingParams.yaml'
     self.readParams()
 
     # try to connect to the provided portname
-    try: 
-      self.ser = serial.Serial(portName, baudrate)
-
-    # if the given portname doesn't work, 
-    # read available ports and select ACMx
-    except serial.serialutil.SerialException:
-      print "Default and user specified port did not work."
-      for (portName, b, c) in list_ports.comports():
-        if portName.find("ACM") >= 0:
-          try: 
-            print "Trying port: " + portName + "."
-            self.ser = serial.Serial(portName, baudrate)
-            break
-          except serial.serialutil.SerialException:
-            print "Port: " + portName + " did not work."
-            pass
-
-    try:
-      self.ser
-      print "Connecting to port " + portName + "."
-      self.getData()
-      return
-    except:
-      raise serial.serialutil.SerialException
-
+    self.ser = io.connectToAvailablePort(baudrate=baudrate, portName=portName, debug=True)
+    
 
 
   # get new IMU data
@@ -51,37 +29,43 @@ class IMUSensorClass:
     while 1:
       try:
         raw_data = self.ser.readline()
-        raw_data = raw_data.rstrip().rsplit('=')[1].rsplit(',')
+        raw_data = raw_data.rstrip().rsplit(',')
 
         self.currentYpr = YPRDataClass(-1*float(raw_data[0]), -1*float(raw_data[1]), -1*float(raw_data[2]))
-        return self.currentYpr
+        self.clickInput = raw_data[12]
+        #self.clickInput = 1
+        return
 
       except:
         print "Error getting data. Trying again."
         pass
 
 
-
+  # update neutral position
   def updateNeutralYpr(self):
     print "Please hold still for a couple of seconds while the system saves neutral position"
 
-    startTime = time.time()
-    while time.time() - startTime < 3:
-      self.neutralYpr = self.getData()
-      #print "Updated Neutral YPR values to "
+    io.clearSerialBuffer(self.ser)
+    self.getData()
+    self.neutralYpr = YPRDataClass(self.currentYpr.yaw, self.currentYpr.pitch, self.currentYpr.roll)
+
+    print "Updated Neutral YPR values to "
     self.neutralYpr.prettyPrint()
-    self.optimizedNeutralYpr = self.neutralYpr
-    self.cursorDisp = HostDeviceHelpers.CursorClass(0.0, 0.0)
+    
+    # initialize optimizedNeutralYpr and onScreenCurrentYpr
+    self.optimizedNeutralYpr = YPRDataClass(self.neutralYpr.yaw, self.neutralYpr.pitch, self.neutralYpr.roll)
     self.onScreenCurrentYpr = YPRDataClass(self.currentYpr.yaw, self.currentYpr.pitch, self.currentYpr.roll)
+    self.cursorDisp = HelperClasses.CursorClass(0.0, 0.0)
 
 
-
+  # optimize neutral position
+  #TODO optimize based on mode chosen
   def optimizeNeutralYpr(self):
     #self.optimizedNeutralYpr.yaw   = self.optimizedNeutralYpr.yaw   - self.params['gamma'] * self.cursorDisp.x
     #self.optimizedNeutralYpr.pitch = self.optimizedNeutralYpr.pitch - self.params['gamma'] * self.cursorDisp.y
     self.optimizedNeutralYpr.yaw   = self.optimizedNeutralYpr.yaw   + self.params['gamma'] * (self.onScreenCurrentYpr.yaw   - self.optimizedNeutralYpr.yaw)**3
     self.optimizedNeutralYpr.pitch = self.optimizedNeutralYpr.pitch + self.params['gamma'] * (self.onScreenCurrentYpr.pitch - self.optimizedNeutralYpr.pitch)**3
-    #self.optimizedNeutralYpr = self.neutralYpr
+    #self.optimizedNeutralYpr = YPRDataClass(self.neutralYpr.yaw, self.neutralYpr.pitch, self.neutralYpr.roll)
     return
   
 
@@ -111,7 +95,7 @@ class IMUSensorClass:
     else:
       y_disp = y_sign * (abs(y_disp) - self.params['neutralZone'])
 
-    self.cursorDisp = HostDeviceHelpers.CursorClass(x_disp, y_disp)
+    self.cursorDisp = HelperClasses.CursorClass(x_disp, y_disp)
     return
 
 
@@ -160,8 +144,6 @@ class YPRDataClass:
     self.yaw = yaw
     self.pitch = pitch
     self.roll = roll
-
-
 
   def prettyPrint(self):
     print "ypr: " + str(self.yaw) + ", " + str(self.pitch) + ", " + str(self.roll)

@@ -1,15 +1,19 @@
 #!/usr/bin/python
 import time
-import IMUHelpers
-import HostDeviceHelpers
+import IMUSensorClass
+import HostDeviceClass
 
-class HeadTrackingFSMClass:
+class MouseMotionFSMClass:
 
   # currentState
   # timer
   # elapsed
   # switched
+  
 
+  # ================================
+  # ======== CHECK TRIGGERS ========
+  # ================================
   def checkTriggers(self):
     # ======== Init State ========
     if self.currentState == State.Init:
@@ -26,9 +30,13 @@ class HeadTrackingFSMClass:
     # ======== Calculate State ========
     elif self.currentState == State.Calculate:
       print "checkTriggers - calculate"
+      self.switchToState(State.Click)
+
+
+    # ======== Move Click ========
+    elif self.currentState == State.Click:
+      print "checkTriggers - click"
       self.switchToState(State.Move)
-      #self.imuSensor.checkGestures()
-      #self.photoSensor.checkGestures()
 
 
     # ======== Move State ========
@@ -37,43 +45,57 @@ class HeadTrackingFSMClass:
       self.switchToState(State.Calculate)
 
 
-      
-  
-  
+  # ==================================
+  # ======== EXECUTE BEHAVIOR ========
+  # ==================================
   def executeBehavior(self):
 
     # ======== Init State ========
     if self.currentState == State.Init:
-      print "\nexecuteBehavior - init"
+      print "executeBehavior - init"
 
       # create and initialize the IMU Sensor
-      self.imuSensor = IMUHelpers.IMUSensorClass()
+      self.imuSensor = IMUSensorClass.IMUSensorClass()
       
       # create and initilize the Host Device
-      self.hostDevice = HostDeviceHelpers.HostDeviceClass()
+      self.hostDevice = HostDeviceClass.HostDeviceClass()
 
       
     # ======== Calibrate State ========
     elif self.currentState == State.Calibrate:
-      print "\nexecuteBehavior - calibrate"
+      print "executeBehavior - calibrate"
+
+      # Initilize click status
+      self.clickStatus = 0
 
       # Store neutral position
       self.imuSensor.updateNeutralYpr()
 
       # Move mouse to center of screen
-      self.hostDevice.centerCursor()
+      self.hostDevice.moveCursorToCenter()
 
 
     # ======== Calculate State ========
     elif self.currentState == State.Calculate:
-      print "\nexecuteBehavior - calculate"
+      print "executeBehavior - calculate"
       self.imuSensor.checkForNewParams()
       self.imuSensor.getData()
 
 
+    # ======== Calculate Click ========
+    elif self.currentState == State.Click:
+      print "executeBehavior - click"
+      if self.clickStatus != self.imuSensor.clickInput:
+        if self.imuSensor.clickInput == 1:
+          self.hostDevice.mousePress()
+        if self.imuSensor.clickInput == 0:
+          self.hostDevice.mouseRelease()
+          
+
+
     # ======== Move State ========
     elif self.currentState == State.Move:
-      print "\nexecuteBehavior - move"
+      print "executeBehavior - move"
       self.imuSensor.calculateCursorDisplacement()
       actualCursorMovement = self.hostDevice.displaceCursor(self.imuSensor.cursorDisp)
       self.imuSensor.updateOnHostScreenCurrentYpr(actualCursorMovement)
@@ -89,9 +111,8 @@ class HeadTrackingFSMClass:
     self.switched = False
 
 
-
-
-  
+  # ==================================
+  # ==================================
     
   def __init__(self):
     self.switchToState(State.Init)
@@ -103,11 +124,12 @@ class HeadTrackingFSMClass:
     self.switched = True
 
   def step(self):
+    print "\nnew step"
     self.elapsed = time.time() - self.timer
     self.executeBehavior()
     self.checkTriggers()
 
 
 class State:
-  Init, Calibrate, Calculate, Move, Gesture = range(5)
+  Init, Calibrate, Calculate, Click, Move = range(5)
 

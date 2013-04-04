@@ -1,5 +1,6 @@
 import yaml
 import serial
+import time
 from serial.tools import list_ports
 
 
@@ -16,7 +17,7 @@ def saveYaml(filename, data):
   f.close()
 
 
-def connectToAvailablePort(baudrate=57600, portName='/dev/ttyACM0', findPort=True, debug=False):
+def connectToAvailablePort(baudrate=57600, portName='/dev/ttyUSB0', findPort=True, debug=False):
 
   if not findPort:
     if debug: print "Trying port " + portName + " at " + str(baudrate)
@@ -39,4 +40,9 @@ def connectToAvailablePort(baudrate=57600, portName='/dev/ttyACM0', findPort=Tru
           pass
 
     raise serial.serialutil.SerialException
+
+def clearSerialBuffer(ser, seconds=3.):
+  timeI = time.time()
+  while time.time() - timeI < seconds:
+    raw_data = ser.readline()
 

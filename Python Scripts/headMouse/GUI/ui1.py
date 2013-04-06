@@ -2,13 +2,13 @@
 
 # Form implementation generated from reading ui file 'settings.ui'
 #
-# Created: Thu Apr 04 17:01:56 2013
+# Created: Mon Apr 01 16:50:25 2013
 #      by: PyQt4 UI code generator 4.10
 #
 # WARNING! All changes made in this file will be lost!
 
 from PyQt4 import QtCore, QtGui
-import createYaml
+
 try:
     _fromUtf8 = QtCore.QString.fromUtf8
 except AttributeError:
@@ -41,6 +41,12 @@ class Ui_Dialog(object):
         self.rightNodButton = QtGui.QPushButton(Dialog)
         self.rightNodButton.setGeometry(QtCore.QRect(120, 40, 91, 51))
         self.rightNodButton.setObjectName(_fromUtf8("rightNodButton"))
+        self.eyebrowButton = QtGui.QPushButton(Dialog)
+        self.eyebrowButton.setGeometry(QtCore.QRect(230, 40, 91, 51))
+        font = QtGui.QFont()
+        font.setPointSize(8)
+        self.eyebrowButton.setFont(font)
+        self.eyebrowButton.setObjectName(_fromUtf8("eyebrowButton"))
         self.gestureLabel_2 = QtGui.QLabel(Dialog)
         self.gestureLabel_2.setGeometry(QtCore.QRect(20, 110, 91, 21))
         font = QtGui.QFont()
@@ -114,11 +120,8 @@ class Ui_Dialog(object):
         self.lcdDisplay.setFrameShape(QtGui.QFrame.StyledPanel)
         self.lcdDisplay.setFrameShadow(QtGui.QFrame.Plain)
         self.lcdDisplay.setNumDigits(1)
+        self.lcdDisplay.setProperty("intValue", 5)
         self.lcdDisplay.setObjectName(_fromUtf8("lcdDisplay"))
-        
-        readArgs = createYaml.readParameters()
-        self.lcdDisplay.setProperty("intValue", readArgs["alpha"] * 10)
-        
         self.line = QtGui.QFrame(Dialog)
         self.line.setGeometry(QtCore.QRect(0, 210, 331, 16))
         self.line.setFrameShape(QtGui.QFrame.HLine)
@@ -142,43 +145,42 @@ class Ui_Dialog(object):
         QtCore.QObject.connect(self.minusButton, QtCore.SIGNAL(_fromUtf8("clicked()")), self.decreaseSensitivity)
         QtCore.QObject.connect(self.leftNodButton, QtCore.SIGNAL(_fromUtf8("clicked()")), self.recordLeftNodTrainingSet)
         QtCore.QObject.connect(self.rightNodButton, QtCore.SIGNAL(_fromUtf8("clicked()")), self.recordRightNodTrainingSet)
+        QtCore.QObject.connect(self.eyebrowButton, QtCore.SIGNAL(_fromUtf8("clicked()")), self.recordEyebrowTrainingSet)
         QtCore.QObject.connect(self.runButton, QtCore.SIGNAL(_fromUtf8("clicked()")), self.toggleStartStop)
         QtCore.QObject.connect(self.exitButton, QtCore.SIGNAL(_fromUtf8("clicked()")), self.exitSoftware)
         QtCore.QMetaObject.connectSlotsByName(Dialog)
 
     def recordLeftNodTrainingSet(self):
-        QtGui.QMessageBox.about(self, "Test Box", "Left Nod Clicked")
+         QtGui.QMessageBox.about(self, "Test Box", "Left Nod Clicked")
 
     def recordRightNodTrainingSet(self):
         QtGui.QMessageBox.about(self, "Test Box", "Right Nod Clicked")
 
+    def recordEyebrowTrainingSet(self):
+        QtGui.QMessageBox.about(self, "Test Box", "Eyebrow Raises Clicked")
+
     def decreaseSensitivity(self):
-        self.lcdDisplay.setProperty("intValue", self.lcdDisplay.intValue() - 1)
-        createYaml.updateParameters(self.lcdDisplay.intValue()/10.0, 0.05, 0.0001)
-        
+        QtGui.QMessageBox.about(self, "Test Box", "Decrease Sensitivity Clicked")
 
     def increaseSensitivity(self):
-        self.lcdDisplay.setProperty("intValue", self.lcdDisplay.intValue() + 1)
-        createYaml.updateParameters(self.lcdDisplay.intValue()/10.0, 0.05, 0.0001)
+        QtGui.QMessageBox.about(self, "Test Box", "Increase Sensitivity Clicked")
 
     def toggleStartStop(self):
         QtGui.QMessageBox.about(self, "Test Box", "Start/Stop Clicked")
-        if(self.runButton.text() == "Start"):
-            self.runButton.setText("Stop")
-        else:
-            self.runButton.setText("Start")
 
     def exitSoftware(self):
         QtGui.QMessageBox.about(self, "Test Box", "Exit Clicked")
+
 
     def retranslateUi(self, Dialog):
         Dialog.setWindowTitle(_translate("Dialog", "Dialog", None))
         self.gestureLabel.setText(_translate("Dialog", "Gesture Calibration", None))
         self.leftNodButton.setText(_translate("Dialog", "Left Nod", None))
         self.rightNodButton.setText(_translate("Dialog", "Right Nod", None))
+        self.eyebrowButton.setText(_translate("Dialog", "Eyebrow Raises", None))
         self.gestureLabel_2.setText(_translate("Dialog", "Sensitivity", None))
         self.plusButton.setText(_translate("Dialog", "+", None))
         self.minusButton.setText(_translate("Dialog", "-", None))
-        self.runButton.setText(_translate("Dialog", "Start", None))
+        self.runButton.setText(_translate("Dialog", "Start/Stop", None))
         self.exitButton.setText(_translate("Dialog", "Exit", None))
 

@@ -32,8 +32,8 @@ class IMUSensorClass:
         raw_data = raw_data.rstrip().rsplit(',')
 
         self.currentYpr = YPRDataClass(-1*float(raw_data[0]), -1*float(raw_data[1]), -1*float(raw_data[2]))
-        self.clickInput = raw_data[12]
-        #self.clickInput = 1
+        #self.clickInput = raw_data[12]
+        self.clickInput = 0
         return
 
       except:
@@ -54,7 +54,7 @@ class IMUSensorClass:
     
     # initialize optimizedNeutralYpr and onScreenCurrentYpr
     self.optimizedNeutralYpr = YPRDataClass(self.neutralYpr.yaw, self.neutralYpr.pitch, self.neutralYpr.roll)
-    self.onScreenCurrentYpr = YPRDataClass(self.currentYpr.yaw, self.currentYpr.pitch, self.currentYpr.roll)
+    #self.onScreenCurrentYpr = YPRDataClass(self.currentYpr.yaw, self.currentYpr.pitch, self.currentYpr.roll)
     self.cursorDisp = HelperClasses.CursorClass(0.0, 0.0)
 
 
@@ -63,9 +63,9 @@ class IMUSensorClass:
   def optimizeNeutralYpr(self):
     #self.optimizedNeutralYpr.yaw   = self.optimizedNeutralYpr.yaw   - self.params['gamma'] * self.cursorDisp.x
     #self.optimizedNeutralYpr.pitch = self.optimizedNeutralYpr.pitch - self.params['gamma'] * self.cursorDisp.y
-    self.optimizedNeutralYpr.yaw   = self.optimizedNeutralYpr.yaw   + self.params['gamma'] * (self.onScreenCurrentYpr.yaw   - self.optimizedNeutralYpr.yaw)**3
-    self.optimizedNeutralYpr.pitch = self.optimizedNeutralYpr.pitch + self.params['gamma'] * (self.onScreenCurrentYpr.pitch - self.optimizedNeutralYpr.pitch)**3
-    #self.optimizedNeutralYpr = YPRDataClass(self.neutralYpr.yaw, self.neutralYpr.pitch, self.neutralYpr.roll)
+    #self.optimizedNeutralYpr.yaw   = self.optimizedNeutralYpr.yaw   + self.params['gamma'] * (self.onScreenCurrentYpr.yaw   - self.optimizedNeutralYpr.yaw)**3
+    #self.optimizedNeutralYpr.pitch = self.optimizedNeutralYpr.pitch + self.params['gamma'] * (self.onScreenCurrentYpr.pitch - self.optimizedNeutralYpr.pitch)**3
+    self.optimizedNeutralYpr = YPRDataClass(self.neutralYpr.yaw, self.neutralYpr.pitch, self.neutralYpr.roll)
     return
   
 

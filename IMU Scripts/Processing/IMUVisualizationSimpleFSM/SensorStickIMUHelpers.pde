@@ -58,7 +58,7 @@ void drawCursor(float a, float b) {
   if (yaw_disp < 0) {x_sign = -1; }
   if (pitch_disp < 0) {y_sign = -1; }
   
-  float neutralZone = .5f;
+  float neutralZone = 1f;
   if (abs(yaw_disp) < neutralZone) {yaw_disp = 0.0;}
   if (abs(pitch_disp) < neutralZone) {pitch_disp = 0.0;}
   

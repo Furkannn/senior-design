@@ -6,9 +6,11 @@ import ui
 
 
 class MainClass(QDialog, ui.Ui_Dialog):
-  def __init__(self, parent=None):
-    super(MainClass, self).__init__(parent)
-    self.setupUi(self)
+	def __init__(self, parent=None):
+		super(MainClass, self).__init__(parent)
+		self.setupUi(self)
+
+
 
 
 app = QApplication(sys.argv)

@@ -92,19 +92,12 @@ class MouseMotionFSMClass:
           self.hostDevice.mouseRelease()
           
 
-
     # ======== Move State ========
     elif self.currentState == State.Move:
       print "executeBehavior - move"
       self.imuSensor.calculateCursorDisplacement()
-      actualCursorMovement = self.hostDevice.displaceCursor(self.imuSensor.cursorDisp)
-      self.imuSensor.updateOnHostScreenCurrentYpr(actualCursorMovement)
+      self.hostDevice.displaceCursor(self.imuSensor.cursorDisp)
       self.imuSensor.optimizeNeutralYpr()
-
-      self.imuSensor.optimizedNeutralYpr.prettyPrint()
-      self.imuSensor.currentYpr.prettyPrint()
-      self.imuSensor.onScreenCurrentYpr.prettyPrint()
-      #print str(self.imuSensor.cursorDisp.x) + "  " + str(self.imuSensor.cursorDisp.y)
 
 
     # reset switched

@@ -72,8 +72,8 @@ boolean readToken(Serial serial, String token) {
 void SensorStickIMUGlobalSetup() {
   // Setup graphics
   if (device == "computer") {
-    size(1366, 786);
-    //size(1920, 1080);
+    //size(1366, 786);
+    size(1920, 1080);
   }
   else {
     size(1800,1000, OPENGL);

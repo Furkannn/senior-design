@@ -7,6 +7,7 @@ import sys
 from serial.tools import list_ports
 import HelperClasses
 import acd_file_io_lib as io
+import math
 
 
 # ======================= IMUSensorClass ======================= 
@@ -61,12 +62,38 @@ class IMUSensorClass:
   def optimizeNeutralYpr(self):
     if self.params['mode'] == 'joystick':
       self.optimizedNeutralYpr = YPRDataClass(self.neutralYpr.yaw, self.neutralYpr.pitch, self.neutralYpr.roll)
-    elif self.params['mode'] == 'dynamic_neutral':
+
+    elif self.params['mode'] == 'dynamic_neutral_log':
+      yaw_disp = (self.optimizedNeutralYpr.yaw - self.currentYpr.yaw) * self.params['gamma']
+      pitch_disp = (self.optimizedNeutralYpr.pitch - self.currentYpr.pitch) * self.params['gamma']
+     
+      x_sign = 1
+      y_sign = 1
+      if yaw_disp < 0: x_sign = -1
+      if pitch_disp < 0: y_sign = -1
+
+      yaw_dip   = x_sign * math.log(abs(yaw_disp   + 1), 10)
+      pitch_dip = y_sign * math.log(abs(pitch_disp + 1), 10)
+    
+      print "*** *** *** ***"
+      print yaw_disp
+      print pitch_disp
+
+      self.optimizedNeutralYpr.yaw   = self.optimizedNeutralYpr.yaw   - yaw_disp
+      self.optimizedNeutralYpr.pitch = self.optimizedNeutralYpr.pitch - pitch_disp
+
+
+    elif self.params['mode'] == 'dynamic_neutral_basic':
       yaw_disp = self.optimizedNeutralYpr.yaw - self.currentYpr.yaw
       pitch_disp = self.optimizedNeutralYpr.pitch - self.currentYpr.pitch
 
+      print "*** *** *** ***"
+      print yaw_disp
+      print pitch_disp
+
       self.optimizedNeutralYpr.yaw   = self.optimizedNeutralYpr.yaw   - self.params['gamma'] * yaw_disp
       self.optimizedNeutralYpr.pitch = self.optimizedNeutralYpr.pitch - self.params['gamma'] * pitch_disp
+
     else:
       print "mode not chosen correctly"
 
@@ -81,15 +108,27 @@ class IMUSensorClass:
     yaw_disp = self.optimizedNeutralYpr.yaw - self.currentYpr.yaw
     pitch_disp = self.optimizedNeutralYpr.pitch - self.currentYpr.pitch
     roll_disp = self.optimizedNeutralYpr.roll - self.currentYpr.roll
+    
+    #print "*** *** *** ***"
+    #print yaw_disp
+    #print pitch_disp
+    #self.neutralYpr.prettyPrint()
+    #self.currentYpr.prettyPrint()
+    #self.optimizedNeutralYpr.prettyPrint()
+    #print "*** *** *** ***"
 
     x_sign = 1
     y_sign = 1
     if yaw_disp < 0: x_sign = -1
     if pitch_disp < 0: y_sign = -1
     
+    # linear function
+    #x_disp = yaw_disp
+    #y_disp = pitch_disp
+
     # x^3 function
-    x_disp = (yaw_disp   ** 3) * self.params['alpha']
-    y_disp = (pitch_disp ** 3) * self.params['alpha']
+    x_disp = (yaw_disp   ** 3 + yaw_disp) * self.params['alpha']
+    y_disp = (pitch_disp ** 3 + pitch_disp) * self.params['alpha']
 
     # quadratic function
     #x_disp = x_sign * (yaw_disp   ** 2) * self.params['alpha']

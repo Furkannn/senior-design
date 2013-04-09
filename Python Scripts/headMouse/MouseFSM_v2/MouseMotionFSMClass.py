@@ -55,7 +55,7 @@ class MouseMotionFSMClass:
       print "executeBehavior - init"
 
       # create and initialize the IMU Sensor
-      self.imuSensor = IMUSensorClass.IMUSensorClass()
+      self.imuSensor = IMUSensorClass.IMUSensorClass(params=self.params)
       
       # create and initilize the Host Device
       self.hostDevice = HostDeviceClass.HostDeviceClass()
@@ -78,7 +78,6 @@ class MouseMotionFSMClass:
     # ======== Calculate State ========
     elif self.currentState == State.Calculate:
       print "executeBehavior - calculate"
-      self.imuSensor.checkForNewParams()
       self.imuSensor.getData()
 
 
@@ -107,8 +106,9 @@ class MouseMotionFSMClass:
   # ==================================
   # ==================================
     
-  def __init__(self):
+  def __init__(self, params):
     self.switchToState(State.Init)
+    self.params = params
 
   def switchToState(self, newState):
     self.currentState = newState

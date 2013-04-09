@@ -13,14 +13,13 @@ import acd_file_io_lib as io
 class IMUSensorClass:
 
   # establish connection
-  def __init__(self, baudrate = 57600, portName = '/dev/ttyUSB0'):
-
-    # get paramters
-    self.paramsFilename = 'HeadTrackingParams.yaml'
-    self.readParams()
+  def __init__(self, params, baudrate = 57600, portName = '/dev/ttyUSB0'):
 
     # try to connect to the provided portname
     self.ser = io.connectToAvailablePort(baudrate=baudrate, portName=portName, debug=True)
+
+    # assign params
+    self.params = params
     
 
 
@@ -59,11 +58,20 @@ class IMUSensorClass:
 
 
   # optimize neutral position
-  #TODO optimize based on mode chosen
   def optimizeNeutralYpr(self):
+    if self.params['mode'] == 'joystick':
+      self.optimizedNeutralYpr = YPRDataClass(self.neutralYpr.yaw, self.neutralYpr.pitch, self.neutralYpr.roll)
+    elif self.params['mode'] == 'dynamic_neutral':
+      yaw_disp = self.optimizedNeutralYpr.yaw - self.currentYpr.yaw
+      pitch_disp = self.optimizedNeutralYpr.pitch - self.currentYpr.pitch
+
+      self.optimizedNeutralYpr.yaw   = self.optimizedNeutralYpr.yaw   - self.params['gamma'] * yaw_disp
+      self.optimizedNeutralYpr.pitch = self.optimizedNeutralYpr.pitch - self.params['gamma'] * pitch_disp
+    else:
+      print "mode not chosen correctly"
+
     #self.optimizedNeutralYpr.yaw   = self.optimizedNeutralYpr.yaw   - self.params['gamma'] * self.cursorDisp.x
     #self.optimizedNeutralYpr.pitch = self.optimizedNeutralYpr.pitch - self.params['gamma'] * self.cursorDisp.y
-    self.optimizedNeutralYpr = YPRDataClass(self.neutralYpr.yaw, self.neutralYpr.pitch, self.neutralYpr.roll)
     return
   
 
@@ -79,8 +87,13 @@ class IMUSensorClass:
     if yaw_disp < 0: x_sign = -1
     if pitch_disp < 0: y_sign = -1
     
-    x_disp = yaw_disp   * self.params['alpha']  +  x_sign * yaw_disp   * yaw_disp   * self.params['beta']
-    y_disp = pitch_disp * self.params['alpha']  +  y_sign * pitch_disp * pitch_disp * self.params['beta']
+    # x^3 function
+    x_disp = (yaw_disp   ** 3) * self.params['alpha']
+    y_disp = (pitch_disp ** 3) * self.params['alpha']
+
+    # quadratic function
+    #x_disp = x_sign * (yaw_disp   ** 2) * self.params['alpha']
+    #y_disp = y_sign * (pitch_disp ** 2) * self.params['alpha']
 
     # account for neutral zone
     if abs(x_disp) < self.params['neutralZone']:
@@ -95,26 +108,6 @@ class IMUSensorClass:
 
     self.cursorDisp = HelperClasses.CursorClass(x_disp, y_disp)
     return
-
-
-
-  def readParams(self):
-    f = open(self.paramsFilename, 'r')
-    self.params = yaml.load(f)
-    print "Loaded new params: " + str(self.params)
-    f.close()
-    # update lastModTime
-    self.lastModTime = os.stat(self.paramsFilename).st_mtime
-
-
-
-  def checkForNewParams(self):
-    modTime = os.stat(self.paramsFilename).st_mtime
-    if self.lastModTime != modTime:
-      self.readParams()
-      self.lastModTime = modTime
-    #else:
-    #  print "no change in params file"
 
 
 

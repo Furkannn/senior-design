@@ -30,7 +30,7 @@ class Ui_Dialog(object):
         Dialog.setMinimumSize(QtCore.QSize(0, 0))
         Dialog.setSizeGripEnabled(False)
         self.gestureLabel = QtGui.QLabel(Dialog)
-        self.gestureLabel.setGeometry(QtCore.QRect(10, 10, 161, 21))
+        self.gestureLabel.setGeometry(QtCore.QRect(10, 10, 200, 21))
         font = QtGui.QFont()
         font.setPointSize(14)
         self.gestureLabel.setFont(font)
@@ -42,13 +42,13 @@ class Ui_Dialog(object):
         self.rightNodButton.setGeometry(QtCore.QRect(120, 40, 91, 51))
         self.rightNodButton.setObjectName(_fromUtf8("rightNodButton"))
         self.gestureLabel_2 = QtGui.QLabel(Dialog)
-        self.gestureLabel_2.setGeometry(QtCore.QRect(20, 110, 91, 21))
+        self.gestureLabel_2.setGeometry(QtCore.QRect(20, 110, 120, 21))
         font = QtGui.QFont()
         font.setPointSize(14)
         self.gestureLabel_2.setFont(font)
         self.gestureLabel_2.setObjectName(_fromUtf8("gestureLabel_2"))
         self.plusButton = QtGui.QPushButton(Dialog)
-        self.plusButton.setGeometry(QtCore.QRect(10, 140, 91, 51))
+        self.plusButton.setGeometry(QtCore.QRect(10, 140, 100, 51))
         font = QtGui.QFont()
         font.setPointSize(16)
         self.plusButton.setFont(font)
@@ -113,12 +113,8 @@ class Ui_Dialog(object):
         self.lcdDisplay.setFont(font)
         self.lcdDisplay.setFrameShape(QtGui.QFrame.StyledPanel)
         self.lcdDisplay.setFrameShadow(QtGui.QFrame.Plain)
-        self.lcdDisplay.setNumDigits(1)
+        self.lcdDisplay.setNumDigits(2)
         self.lcdDisplay.setObjectName(_fromUtf8("lcdDisplay"))
-        
-        readArgs = createYaml.readParameters()
-        self.lcdDisplay.setProperty("intValue", readArgs["alpha"] * 10)
-        
         self.line = QtGui.QFrame(Dialog)
         self.line.setGeometry(QtCore.QRect(0, 210, 331, 16))
         self.line.setFrameShape(QtGui.QFrame.HLine)
@@ -136,6 +132,11 @@ class Ui_Dialog(object):
         font.setPointSize(12)
         self.exitButton.setFont(font)
         self.exitButton.setObjectName(_fromUtf8("exitButton"))
+#=============== START BACKUP ===============================
+
+        Dialog.setWindowTitle("Head Mouse Settings")
+        readArgs = createYaml.readParameters() 
+        self.lcdDisplay.setProperty("intValue", readArgs["alpha"] + 1)
 
         self.retranslateUi(Dialog)
         QtCore.QObject.connect(self.plusButton, QtCore.SIGNAL(_fromUtf8("clicked()")), self.increaseSensitivity)
@@ -153,13 +154,20 @@ class Ui_Dialog(object):
         QtGui.QMessageBox.about(self, "Test Box", "Right Nod Clicked")
 
     def decreaseSensitivity(self):
-        self.lcdDisplay.setProperty("intValue", self.lcdDisplay.intValue() - 1)
-        createYaml.updateParameters(self.lcdDisplay.intValue()/10.0, 0.05, 0.0001)
+        alphaValue = self.lcdDisplay.intValue()
+        if(alphaValue > 1 ):
+            alphaValue = alphaValue - 1
+            self.lcdDisplay.setProperty("intValue",  alphaValue)
+            createYaml.updateParameters(alpha = alphaValue - 1)
         
 
     def increaseSensitivity(self):
-        self.lcdDisplay.setProperty("intValue", self.lcdDisplay.intValue() + 1)
-        createYaml.updateParameters(self.lcdDisplay.intValue()/10.0, 0.05, 0.0001)
+        alphaValue = self.lcdDisplay.intValue()
+        readArgs = createYaml.readParameters() 
+        if(alphaValue <  len(readArgs[alpha_vals]) ):
+            alphaValue = alphaValue + 1
+            self.lcdDisplay.setProperty("intValue",  alphaValue)
+            createYaml.updateParameters(alpha = alphaValue - 1)
 
     def toggleStartStop(self):
         QtGui.QMessageBox.about(self, "Test Box", "Start/Stop Clicked")
@@ -169,10 +177,12 @@ class Ui_Dialog(object):
             self.runButton.setText("Start")
 
     def exitSoftware(self):
-        QtGui.QMessageBox.about(self, "Test Box", "Exit Clicked")
+        QtGui.QApplication.quit()
+
+#================= END BACKUP =============================
 
     def retranslateUi(self, Dialog):
-        Dialog.setWindowTitle(_translate("Dialog", "Dialog", None))
+        Dialog.setWindowTitle(_translate("Head Mouse Settings", "Head Mouse Settings", None))
         self.gestureLabel.setText(_translate("Dialog", "Gesture Calibration", None))
         self.leftNodButton.setText(_translate("Dialog", "Left Nod", None))
         self.rightNodButton.setText(_translate("Dialog", "Right Nod", None))

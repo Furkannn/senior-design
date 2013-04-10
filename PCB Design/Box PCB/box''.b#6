@@ -38,7 +38,7 @@
 <layer number="42" name="bRestrict" color="1" fill="10" visible="yes" active="yes"/>
 <layer number="43" name="vRestrict" color="2" fill="10" visible="yes" active="yes"/>
 <layer number="44" name="Drills" color="7" fill="1" visible="no" active="yes"/>
-<layer number="45" name="Holes" color="7" fill="1" visible="no" active="yes"/>
+<layer number="45" name="Holes" color="7" fill="1" visible="yes" active="yes"/>
 <layer number="46" name="Milling" color="3" fill="1" visible="no" active="yes"/>
 <layer number="47" name="Measures" color="7" fill="1" visible="no" active="yes"/>
 <layer number="48" name="Document" color="7" fill="1" visible="yes" active="yes"/>
@@ -106,6 +106,10 @@
 <wire x1="50" y1="10" x2="50" y2="75" width="0.4064" layer="20"/>
 <wire x1="50" y1="75" x2="0" y2="75" width="0.4064" layer="20"/>
 <wire x1="0" y1="75" x2="0" y2="10" width="0.4064" layer="20"/>
+<hole x="47.5" y="12.5" drill="3"/>
+<hole x="2.5" y="72.5" drill="3"/>
+<hole x="47.5" y="72.5" drill="3"/>
+<hole x="2.5" y="40.5" drill="3"/>
 </plain>
 <libraries>
 <library name="con-lstb">

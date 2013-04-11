@@ -60,10 +60,11 @@ class IMUSensorClass:
 
   # optimize neutral position
   def optimizeNeutralYpr(self):
-    if self.params['mode'] == 'joystick':
+    m = self.params['mode_vals'][self.params['mode']]
+    if m == 'joystick':
       self.optimizedNeutralYpr = YPRDataClass(self.neutralYpr.yaw, self.neutralYpr.pitch, self.neutralYpr.roll)
 
-    elif self.params['mode'] == 'dynamic_neutral_log':
+    elif m == 'log':
       yaw_disp = (self.optimizedNeutralYpr.yaw - self.currentYpr.yaw) * self.params['gamma']
       pitch_disp = (self.optimizedNeutralYpr.pitch - self.currentYpr.pitch) * self.params['gamma']
      
@@ -83,7 +84,7 @@ class IMUSensorClass:
       self.optimizedNeutralYpr.pitch = self.optimizedNeutralYpr.pitch - pitch_disp
 
 
-    elif self.params['mode'] == 'dynamic_neutral_basic':
+    elif m == 'basic':
       yaw_disp = self.optimizedNeutralYpr.yaw - self.currentYpr.yaw
       pitch_disp = self.optimizedNeutralYpr.pitch - self.currentYpr.pitch
 
@@ -126,13 +127,16 @@ class IMUSensorClass:
     #x_disp = yaw_disp
     #y_disp = pitch_disp
 
+    readAlpha = self.params['alpha_vals'][self.params['alpha']]
+    print readAlpha
+
     # x^3 function
-    x_disp = (yaw_disp   ** 3 + yaw_disp) * self.params['alpha']
-    y_disp = (pitch_disp ** 3 + pitch_disp) * self.params['alpha']
+    x_disp = (yaw_disp   ** 3 + yaw_disp) * readAlpha
+    y_disp = (pitch_disp ** 3 + pitch_disp) * readAlpha
 
     # quadratic function
-    #x_disp = x_sign * (yaw_disp   ** 2) * self.params['alpha']
-    #y_disp = y_sign * (pitch_disp ** 2) * self.params['alpha']
+    #x_disp = x_sign * (yaw_disp   ** 2) * readAlpha
+    #y_disp = y_sign * (pitch_disp ** 2) * readAlpha
 
     # account for neutral zone
     if abs(x_disp) < self.params['neutralZone']:

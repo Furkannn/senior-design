@@ -18,8 +18,6 @@ def checkForNewParams():
 
 
 
-
-
 print "\n\n============    Head Tracking Log   ============"
 
 # get paramters
@@ -27,7 +25,6 @@ paramsFilename = 'HeadTrackingParams.yaml'
 (params, lastModTime) = readParams()
 
 mouseFsm = mouseFSMClass.MouseMotionFSMClass(params=params)
-
 
 
 while 1:

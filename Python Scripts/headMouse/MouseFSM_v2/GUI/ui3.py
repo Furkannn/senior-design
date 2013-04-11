@@ -2,12 +2,13 @@
 
 # Form implementation generated from reading ui file '.\settings.ui'
 #
-# Created: Thu Apr 11 17:38:49 2013
+# Created: Thu Apr 11 13:57:22 2013
 #      by: PyQt4 UI code generator 4.10
 #
 # WARNING! All changes made in this file will be lost!
 
 from PyQt4 import QtCore, QtGui
+import createYaml
 
 try:
     _fromUtf8 = QtCore.QString.fromUtf8
@@ -26,7 +27,7 @@ except AttributeError:
 class Ui_Dialog(object):
     def setupUi(self, Dialog):
         Dialog.setObjectName(_fromUtf8("Dialog"))
-        Dialog.resize(340, 328)
+        Dialog.resize(340, 309)
         Dialog.setMinimumSize(QtCore.QSize(0, 0))
         Dialog.setSizeGripEnabled(False)
         self.gestureLabel = QtGui.QLabel(Dialog)
@@ -47,18 +48,18 @@ class Ui_Dialog(object):
         font.setPointSize(14)
         self.gestureLabel_2.setFont(font)
         self.gestureLabel_2.setObjectName(_fromUtf8("gestureLabel_2"))
-        self.minusButton = QtGui.QPushButton(Dialog)
-        self.minusButton.setGeometry(QtCore.QRect(10, 140, 91, 51))
-        font = QtGui.QFont()
-        font.setPointSize(16)
-        self.minusButton.setFont(font)
-        self.minusButton.setObjectName(_fromUtf8("minusButton"))
         self.plusButton = QtGui.QPushButton(Dialog)
-        self.plusButton.setGeometry(QtCore.QRect(120, 140, 91, 51))
+        self.plusButton.setGeometry(QtCore.QRect(10, 140, 91, 51))
         font = QtGui.QFont()
         font.setPointSize(16)
         self.plusButton.setFont(font)
         self.plusButton.setObjectName(_fromUtf8("plusButton"))
+        self.minusButton = QtGui.QPushButton(Dialog)
+        self.minusButton.setGeometry(QtCore.QRect(120, 140, 91, 51))
+        font = QtGui.QFont()
+        font.setPointSize(16)
+        self.minusButton.setFont(font)
+        self.minusButton.setObjectName(_fromUtf8("minusButton"))
         self.lcdDisplay = QtGui.QLCDNumber(Dialog)
         self.lcdDisplay.setGeometry(QtCore.QRect(240, 140, 61, 51))
         palette = QtGui.QPalette()
@@ -122,13 +123,13 @@ class Ui_Dialog(object):
         self.line.setFrameShadow(QtGui.QFrame.Sunken)
         self.line.setObjectName(_fromUtf8("line"))
         self.runButton = QtGui.QPushButton(Dialog)
-        self.runButton.setGeometry(QtCore.QRect(40, 270, 91, 51))
+        self.runButton.setGeometry(QtCore.QRect(40, 240, 91, 51))
         font = QtGui.QFont()
         font.setPointSize(12)
         self.runButton.setFont(font)
         self.runButton.setObjectName(_fromUtf8("runButton"))
         self.exitButton = QtGui.QPushButton(Dialog)
-        self.exitButton.setGeometry(QtCore.QRect(190, 270, 91, 51))
+        self.exitButton.setGeometry(QtCore.QRect(190, 240, 91, 51))
         font = QtGui.QFont()
         font.setPointSize(12)
         self.exitButton.setFont(font)
@@ -146,32 +147,72 @@ class Ui_Dialog(object):
         self.joystickButton = QtGui.QRadioButton(self.groupBox)
         self.joystickButton.setGeometry(QtCore.QRect(20, 80, 95, 20))
         self.joystickButton.setObjectName(_fromUtf8("joystickButton"))
-        self.statusLabel = QtGui.QLabel(Dialog)
-        self.statusLabel.setGeometry(QtCore.QRect(10, 230, 311, 16))
-        font = QtGui.QFont()
-        font.setPointSize(10)
-        font.setBold(True)
-        font.setWeight(75)
-        self.statusLabel.setFont(font)
-        self.statusLabel.setAlignment(QtCore.Qt.AlignCenter)
-        self.statusLabel.setObjectName(_fromUtf8("statusLabel"))
-        self.line_2 = QtGui.QFrame(Dialog)
-        self.line_2.setGeometry(QtCore.QRect(0, 250, 341, 20))
-        self.line_2.setFrameShape(QtGui.QFrame.HLine)
-        self.line_2.setFrameShadow(QtGui.QFrame.Sunken)
-        self.line_2.setObjectName(_fromUtf8("line_2"))
         self.retranslateUi(Dialog)
-        
-        QtCore.QObject.connect(self.minusButton, QtCore.SIGNAL(_fromUtf8("clicked()")), Dialog.accept)
-        QtCore.QObject.connect(self.plusButton, QtCore.SIGNAL(_fromUtf8("clicked()")), Dialog.accept)
-        QtCore.QObject.connect(self.leftNodButton, QtCore.SIGNAL(_fromUtf8("clicked()")), Dialog.accept)
-        QtCore.QObject.connect(self.rightNodButton, QtCore.SIGNAL(_fromUtf8("clicked()")), Dialog.accept)
-        QtCore.QObject.connect(self.runButton, QtCore.SIGNAL(_fromUtf8("clicked()")), Dialog.accept)
-        QtCore.QObject.connect(self.exitButton, QtCore.SIGNAL(_fromUtf8("clicked()")), Dialog.accept)
-        QtCore.QObject.connect(self.basicButton, QtCore.SIGNAL(_fromUtf8("clicked()")), Dialog.accept)
-        QtCore.QObject.connect(self.logButton, QtCore.SIGNAL(_fromUtf8("clicked()")), Dialog.accept)
-        QtCore.QObject.connect(self.joystickButton, QtCore.SIGNAL(_fromUtf8("clicked()")), Dialog.accept)
+
+#=============== START BACKUP ===============================
+        Dialog.setWindowTitle("Head Mouse Settings")
+        readArgs = createYaml.readParameters()
+        self.lcdDisplay.setNumDigits(2) 
+        self.lcdDisplay.setProperty("intValue", readArgs["alpha"] + 1)
+        mode = readArgs['mode']
+        if(mode == 0):
+            self.basicButton.setChecked(True)
+        elif(mode == 1):
+            self.logButton.setChecked(True)
+        else:
+            self.joystickButton.setChecked(True)
+
+        QtCore.QObject.connect(self.plusButton, QtCore.SIGNAL(_fromUtf8("clicked()")), self.increaseSensitivity)
+        QtCore.QObject.connect(self.minusButton, QtCore.SIGNAL(_fromUtf8("clicked()")), self.decreaseSensitivity)
+        QtCore.QObject.connect(self.leftNodButton, QtCore.SIGNAL(_fromUtf8("clicked()")), self.recordLeftNodTrainingSet)
+        QtCore.QObject.connect(self.rightNodButton, QtCore.SIGNAL(_fromUtf8("clicked()")), self.recordRightNodTrainingSet)
+        QtCore.QObject.connect(self.runButton, QtCore.SIGNAL(_fromUtf8("clicked()")), self.toggleStartStop)
+        QtCore.QObject.connect(self.exitButton, QtCore.SIGNAL(_fromUtf8("clicked()")), self.exitSoftware)
+        QtCore.QObject.connect(self.basicButton, QtCore.SIGNAL(_fromUtf8("clicked()")), self.radioButtonClick)
+        QtCore.QObject.connect(self.logButton, QtCore.SIGNAL(_fromUtf8("clicked()")), self.radioButtonClick)
+        QtCore.QObject.connect(self.joystickButton, QtCore.SIGNAL(_fromUtf8("clicked()")), self.radioButtonClick)
         QtCore.QMetaObject.connectSlotsByName(Dialog)
+
+    def radioButtonClick(self):
+        if(self.basicButton.isChecked()):
+            checkedMode = 0
+        if(self.logButton.isChecked()):
+            checkedMode = 1
+        if(self.joystickButton.isChecked()):
+            checkedMode = 2
+        createYaml.updateParameters(mode = checkedMode)
+
+    def recordLeftNodTrainingSet(self):
+         QtGui.QMessageBox.about(self, "Test Box", "Left Nod Clicked")
+
+    def recordRightNodTrainingSet(self):
+        QtGui.QMessageBox.about(self, "Test Box", "Right Nod Clicked")
+
+    def decreaseSensitivity(self):
+        alphaValue = self.lcdDisplay.intValue()
+        if(alphaValue > 1 ):
+            alphaValue = alphaValue - 1
+            self.lcdDisplay.setProperty("intValue",  alphaValue)
+            createYaml.updateParameters(alpha = alphaValue - 1)
+        
+
+    def increaseSensitivity(self):
+        alphaValue = self.lcdDisplay.intValue()
+        readArgs = createYaml.readParameters() 
+        if(alphaValue <  len(readArgs['alpha_vals']) ):
+            alphaValue = alphaValue + 1
+            self.lcdDisplay.setProperty("intValue",  alphaValue)
+            createYaml.updateParameters(alpha = alphaValue - 1)
+
+    def toggleStartStop(self):
+        QtGui.QMessageBox.about(self, "Test Box", "Start/Stop Clicked")
+        if(self.runButton.text() == "Start"):
+            self.runButton.setText("Stop")
+        else:
+            self.runButton.setText("Start")
+
+    def exitSoftware(self):
+        QtGui.QApplication.quit()
 
     def retranslateUi(self, Dialog):
         Dialog.setWindowTitle(_translate("Head Mouse Settings", "Head Mouse Settings", None))
@@ -179,13 +220,12 @@ class Ui_Dialog(object):
         self.leftNodButton.setText(_translate("Dialog", "Left Nod", None))
         self.rightNodButton.setText(_translate("Dialog", "Right Nod", None))
         self.gestureLabel_2.setText(_translate("Dialog", "Sensitivity", None))
-        self.minusButton.setText(_translate("Dialog", "-", None))
         self.plusButton.setText(_translate("Dialog", "+", None))
+        self.minusButton.setText(_translate("Dialog", "-", None))
         self.runButton.setText(_translate("Dialog", "Start", None))
         self.exitButton.setText(_translate("Dialog", "Exit", None))
         self.groupBox.setTitle(_translate("Dialog", "Mode", None))
         self.basicButton.setText(_translate("Dialog", "Basic", None))
         self.logButton.setText(_translate("Dialog", "Log", None))
         self.joystickButton.setText(_translate("Dialog", "Joystick", None))
-        self.statusLabel.setText(_translate("Dialog", "Stopped", None))
 

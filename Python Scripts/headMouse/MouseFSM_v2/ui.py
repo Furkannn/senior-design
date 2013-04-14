@@ -8,6 +8,7 @@
 # WARNING! All changes made in this file will be lost!
 
 from PyQt4 import QtCore, QtGui
+import createYaml
 
 try:
     _fromUtf8 = QtCore.QString.fromUtf8
@@ -161,17 +162,74 @@ class Ui_Dialog(object):
         self.line_2.setFrameShadow(QtGui.QFrame.Sunken)
         self.line_2.setObjectName(_fromUtf8("line_2"))
         self.retranslateUi(Dialog)
-        
-        QtCore.QObject.connect(self.minusButton, QtCore.SIGNAL(_fromUtf8("clicked()")), Dialog.accept)
-        QtCore.QObject.connect(self.plusButton, QtCore.SIGNAL(_fromUtf8("clicked()")), Dialog.accept)
-        QtCore.QObject.connect(self.leftNodButton, QtCore.SIGNAL(_fromUtf8("clicked()")), Dialog.accept)
-        QtCore.QObject.connect(self.rightNodButton, QtCore.SIGNAL(_fromUtf8("clicked()")), Dialog.accept)
-        QtCore.QObject.connect(self.runButton, QtCore.SIGNAL(_fromUtf8("clicked()")), Dialog.accept)
-        QtCore.QObject.connect(self.exitButton, QtCore.SIGNAL(_fromUtf8("clicked()")), Dialog.accept)
-        QtCore.QObject.connect(self.basicButton, QtCore.SIGNAL(_fromUtf8("clicked()")), Dialog.accept)
-        QtCore.QObject.connect(self.logButton, QtCore.SIGNAL(_fromUtf8("clicked()")), Dialog.accept)
-        QtCore.QObject.connect(self.joystickButton, QtCore.SIGNAL(_fromUtf8("clicked()")), Dialog.accept)
+
+#=============== START BACKUP ===============================
+        Dialog.setWindowTitle("Head Mouse Settings")
+        readArgs = createYaml.readParameters()
+        self.lcdDisplay.setNumDigits(2) 
+        self.lcdDisplay.setProperty("intValue", readArgs["alpha"] + 1)
+        mode = readArgs['mode']
+        if(mode == 0):
+            self.basicButton.setChecked(True)
+        elif(mode == 1):
+            self.logButton.setChecked(True)
+        else:
+            self.joystickButton.setChecked(True)
+
+        QtCore.QObject.connect(self.plusButton, QtCore.SIGNAL(_fromUtf8("clicked()")), self.increaseSensitivity)
+        QtCore.QObject.connect(self.minusButton, QtCore.SIGNAL(_fromUtf8("clicked()")), self.decreaseSensitivity)
+        QtCore.QObject.connect(self.leftNodButton, QtCore.SIGNAL(_fromUtf8("clicked()")), self.recordLeftNodTrainingSet)
+        QtCore.QObject.connect(self.rightNodButton, QtCore.SIGNAL(_fromUtf8("clicked()")), self.recordRightNodTrainingSet)
+        QtCore.QObject.connect(self.runButton, QtCore.SIGNAL(_fromUtf8("clicked()")), self.toggleStartStop)
+        QtCore.QObject.connect(self.exitButton, QtCore.SIGNAL(_fromUtf8("clicked()")), self.exitSoftware)
+        QtCore.QObject.connect(self.basicButton, QtCore.SIGNAL(_fromUtf8("clicked()")), self.radioButtonClick)
+        QtCore.QObject.connect(self.logButton, QtCore.SIGNAL(_fromUtf8("clicked()")), self.radioButtonClick)
+        QtCore.QObject.connect(self.joystickButton, QtCore.SIGNAL(_fromUtf8("clicked()")), self.radioButtonClick)
         QtCore.QMetaObject.connectSlotsByName(Dialog)
+
+    def radioButtonClick(self):
+        if(self.basicButton.isChecked()):
+            checkedMode = 0
+        if(self.logButton.isChecked()):
+            checkedMode = 1
+        if(self.joystickButton.isChecked()):
+            checkedMode = 2
+        createYaml.updateParameters(mode = checkedMode)
+
+    def recordLeftNodTrainingSet(self):
+         QtGui.QMessageBox.about(self, "Test Box", "Left Nod Clicked")
+
+    def recordRightNodTrainingSet(self):
+        QtGui.QMessageBox.about(self, "Test Box", "Right Nod Clicked")
+
+    def decreaseSensitivity(self):
+        alphaValue = self.lcdDisplay.intValue()
+        if(alphaValue > 1 ):
+            alphaValue = alphaValue - 1
+            self.lcdDisplay.setProperty("intValue",  alphaValue)
+            createYaml.updateParameters(alpha = alphaValue - 1)
+        
+
+    def increaseSensitivity(self):
+        alphaValue = self.lcdDisplay.intValue()
+        readArgs = createYaml.readParameters() 
+        if(alphaValue <  len(readArgs['alpha_vals']) ):
+            alphaValue = alphaValue + 1
+            self.lcdDisplay.setProperty("intValue",  alphaValue)
+            createYaml.updateParameters(alpha = alphaValue - 1)
+
+    def toggleStartStop(self):
+        if(self.runButton.text() == "Start"):
+            self.runButton.setText("Stop")
+            self.statusLabel.setText("Running")
+        else:
+            self.runButton.setText("Start")
+            self.statusLabel.setText("Stopped")
+
+    def exitSoftware(self):
+        QtGui.QApplication.quit()
+
+#=============== END BACKUP ===============================
 
     def retranslateUi(self, Dialog):
         Dialog.setWindowTitle(_translate("Head Mouse Settings", "Head Mouse Settings", None))

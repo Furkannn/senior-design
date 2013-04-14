@@ -1,6 +1,6 @@
-alpha: 2
+alpha: 4
 alpha_vals: [0.001, 0.002, 0.003, 0.004, 0.005, 0.006, 0.007, 0.008, 0.009, 0.01]
 gamma: 0.02
-mode: 1
+mode: 2
 mode_vals: [basic, log, joystick]
-neutralZone: 1.
+neutralZone: 1.0

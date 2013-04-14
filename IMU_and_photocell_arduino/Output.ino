@@ -2,7 +2,7 @@
 
 void output_photocell()
 {
-  Serial.print(analogRead(A0)); Serial.print(",");
+  Serial.print(digitalRead(10)); Serial.print(",");
 }
   
 // Output angles: yaw, pitch, roll

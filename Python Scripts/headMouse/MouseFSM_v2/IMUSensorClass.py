@@ -31,9 +31,10 @@ class IMUSensorClass:
         raw_data = self.ser.readline()
         raw_data = raw_data.rstrip().rsplit(',')
 
-        self.currentYpr = YPRDataClass(-1*float(raw_data[0]), -1*float(raw_data[1]), -1*float(raw_data[2]))
-        #self.clickInput = raw_data[12]
-        self.clickInput = 0
+        #self.currentYpr = YPRDataClass(-1*float(raw_data[0]), -1*float(raw_data[1]), -1*float(raw_data[2]))
+        #self.clickInput = 0
+        self.currentYpr = YPRDataClass(-1*float(raw_data[1]), -1*float(raw_data[2]), -1*float(raw_data[3]))
+        self.clickInput = float(raw_data[0])
         return
 
       except:
@@ -76,9 +77,9 @@ class IMUSensorClass:
       yaw_dip   = x_sign * math.log(abs(yaw_disp   + 1), 10)
       pitch_dip = y_sign * math.log(abs(pitch_disp + 1), 10)
     
-      print "*** *** *** ***"
-      print yaw_disp
-      print pitch_disp
+      #print "*** *** *** ***"
+      #print yaw_disp
+      #print pitch_disp
 
       self.optimizedNeutralYpr.yaw   = self.optimizedNeutralYpr.yaw   - yaw_disp
       self.optimizedNeutralYpr.pitch = self.optimizedNeutralYpr.pitch - pitch_disp
@@ -88,9 +89,9 @@ class IMUSensorClass:
       yaw_disp = self.optimizedNeutralYpr.yaw - self.currentYpr.yaw
       pitch_disp = self.optimizedNeutralYpr.pitch - self.currentYpr.pitch
 
-      print "*** *** *** ***"
-      print yaw_disp
-      print pitch_disp
+      #print "*** *** *** ***"
+      #print yaw_disp
+      #print pitch_disp
 
       self.optimizedNeutralYpr.yaw   = self.optimizedNeutralYpr.yaw   - self.params['gamma'] * yaw_disp
       self.optimizedNeutralYpr.pitch = self.optimizedNeutralYpr.pitch - self.params['gamma'] * pitch_disp
@@ -128,7 +129,6 @@ class IMUSensorClass:
     #y_disp = pitch_disp
 
     readAlpha = self.params['alpha_vals'][self.params['alpha']]
-    print readAlpha
 
     # x^3 function
     x_disp = (yaw_disp   ** 3 + yaw_disp) * readAlpha

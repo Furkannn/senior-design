@@ -1,20 +1,31 @@
 import MouseMotionFSMClass as mouseFSMClass
 import os
 import acd_file_io_lib as io
+import time
 
 
 def readParams():
+  global lastModTime
+  global params
+
   params = io.fetchYaml(paramsFilename)
-  print "Loaded new params: " + str(params)
   lastModTime = os.stat(paramsFilename).st_mtime
-  return (params, lastModTime)
+  print "Loaded new params: " + str(params)
+
+
 
 def checkForNewParams():
-  modTime = os.stat(paramsFilename).st_mtime
   global lastModTime
+  global params
+
+  modTime = os.stat(paramsFilename).st_mtime
   if lastModTime != modTime:
-    readParams()
+    params = None
+    while params == None:
+      readParams()
     lastModTime = modTime
+    return True
+  return False
 
 
 
@@ -22,14 +33,14 @@ print "\n\n============    Head Tracking Log   ============"
 
 # get paramters
 paramsFilename = 'HeadTrackingParams.yaml'
-(params, lastModTime) = readParams()
+readParams()
 
 mouseFsm = mouseFSMClass.MouseMotionFSMClass(params=params)
 
 
 while 1:
   mouseFsm.step()
-  checkForNewParams()
-
+  if checkForNewParams():
+    mouseFsm.updateParams(params)
 
 

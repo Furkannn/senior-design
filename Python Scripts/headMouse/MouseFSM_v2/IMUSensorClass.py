@@ -21,9 +21,9 @@ class IMUSensorClass:
 
     # assign params
     self.params = params
-    
 
 
+  
   # get new IMU data
   def getData(self):
     while 1:
@@ -129,6 +129,7 @@ class IMUSensorClass:
     #y_disp = pitch_disp
 
     readAlpha = self.params['alpha_vals'][self.params['alpha']]
+    print readAlpha
 
     # x^3 function
     x_disp = (yaw_disp   ** 3 + yaw_disp) * readAlpha

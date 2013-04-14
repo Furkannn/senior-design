@@ -127,6 +127,10 @@ class MouseMotionFSMClass:
     self.executeBehavior()
     self.checkTriggers()
 
+  def updateParams(self, params):
+    self.params = params
+    self.imuSensor.params = params
+
 
 class State:
   Init, Calibrate, Calculate, Click, Move = range(5)

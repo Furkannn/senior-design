@@ -8,7 +8,8 @@
 # WARNING! All changes made in this file will be lost!
 
 from PyQt4 import QtCore, QtGui
-import createYaml
+import acd_file_io_lib
+import os.path, time
 
 try:
     _fromUtf8 = QtCore.QString.fromUtf8
@@ -164,8 +165,11 @@ class Ui_Dialog(object):
         self.retranslateUi(Dialog)
 
 #=============== START BACKUP ===============================
+        self.lastUpdate = 0
+        self.messageTimer = QtCore.QTimer()
+        self.messageTimer.start(1000)
         Dialog.setWindowTitle("Head Mouse Settings")
-        readArgs = createYaml.readParameters()
+        readArgs = acd_file_io_lib.readParameters()
         self.lcdDisplay.setNumDigits(2) 
         self.lcdDisplay.setProperty("intValue", readArgs["alpha"] + 1)
         mode = readArgs['mode']
@@ -185,6 +189,7 @@ class Ui_Dialog(object):
         QtCore.QObject.connect(self.basicButton, QtCore.SIGNAL(_fromUtf8("clicked()")), self.radioButtonClick)
         QtCore.QObject.connect(self.logButton, QtCore.SIGNAL(_fromUtf8("clicked()")), self.radioButtonClick)
         QtCore.QObject.connect(self.joystickButton, QtCore.SIGNAL(_fromUtf8("clicked()")), self.radioButtonClick)
+        QtCore.QObject.connect(self.messageTimer, QtCore.SIGNAL("timeout()"), self.messageUpdate)
         QtCore.QMetaObject.connectSlotsByName(Dialog)
 
     def radioButtonClick(self):
@@ -194,7 +199,7 @@ class Ui_Dialog(object):
             checkedMode = 1
         if(self.joystickButton.isChecked()):
             checkedMode = 2
-        createYaml.updateParameters(mode = checkedMode)
+        acd_file_io_lib.updateParameters(mode = checkedMode)
 
     def recordLeftNodTrainingSet(self):
          QtGui.QMessageBox.about(self, "Test Box", "Left Nod Clicked")
@@ -207,16 +212,15 @@ class Ui_Dialog(object):
         if(alphaValue > 1 ):
             alphaValue = alphaValue - 1
             self.lcdDisplay.setProperty("intValue",  alphaValue)
-            createYaml.updateParameters(alpha = alphaValue - 1)
-        
+            acd_file_io_lib.updateParameters(alpha = alphaValue - 1)
 
     def increaseSensitivity(self):
         alphaValue = self.lcdDisplay.intValue()
-        readArgs = createYaml.readParameters() 
+        readArgs = acd_file_io_lib.readParameters() 
         if(alphaValue <  len(readArgs['alpha_vals']) ):
             alphaValue = alphaValue + 1
             self.lcdDisplay.setProperty("intValue",  alphaValue)
-            createYaml.updateParameters(alpha = alphaValue - 1)
+            acd_file_io_lib.updateParameters(alpha = alphaValue - 1)
 
     def toggleStartStop(self):
         if(self.runButton.text() == "Start"):
@@ -225,9 +229,14 @@ class Ui_Dialog(object):
         else:
             self.runButton.setText("Start")
             self.statusLabel.setText("Stopped")
-
     def exitSoftware(self):
         QtGui.QApplication.quit()
+
+    def messageUpdate(self):
+        if(time.ctime(os.path.getmtime('UiMessage.yaml')) != self.lastUpdate):
+            self.lastUpdate = time.ctime(os.path.getmtime('UiMessage.yaml'))
+            self.statusLabel.setText(acd_file_io_lib.readMessage())
+
 
 #=============== END BACKUP ===============================
 

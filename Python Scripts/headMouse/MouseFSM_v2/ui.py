@@ -166,8 +166,7 @@ class Ui_Dialog(object):
 
 #=============== START BACKUP ===============================
         self.runButton.setText("Recenter")
-        acd_file_io_lib.updateParameters(recenter=0)
-        acd_file_io_lib.updateParameters(exit=0)
+        acd_file_io_lib.updateParameters(exit=0, recenter=0)
         self.lastUpdate = 0
         self.messageTimer = QtCore.QTimer()
         self.messageTimer.start(1000)

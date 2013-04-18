@@ -5,4 +5,4 @@ gamma: 0.02
 mode: 2
 mode_vals: [basic, log, joystick]
 neutralZone: 0.5
-recenter: 1
+recenter: 0

@@ -67,7 +67,7 @@ class detectGesturesClass():
       e = np.sum(np.square(self.setClassAverages[setClass] - windowScore))
       #self.error[setClass].append(e)
       error[setClass] = e
-      if e < 0.07:
+      if e < 0.04:
         print setClass
     
     #print self.error

@@ -46,6 +46,7 @@ class IMUSensorClass:
   # update neutral position
   def updateNeutralYpr(self):
     print "Please hold still for a couple of seconds while the system saves neutral position"
+    io.writeMessage("Please hold your head still...")
 
     io.clearSerialBuffer(self.ser)
     self.getData()
@@ -57,6 +58,8 @@ class IMUSensorClass:
     # initialize optimizedNeutralYpr 
     self.optimizedNeutralYpr = YPRDataClass(self.neutralYpr.yaw, self.neutralYpr.pitch, self.neutralYpr.roll)
     self.cursorDisp = HelperClasses.CursorClass(0.0, 0.0)
+
+    io.writeMessage("")
 
 
   # optimize neutral position
@@ -129,10 +132,9 @@ class IMUSensorClass:
     #y_disp = pitch_disp
 
     readAlpha = self.params['alpha_vals'][self.params['alpha']]
-    print readAlpha
 
     # x^3 function
-    x_disp = (yaw_disp   ** 3 + yaw_disp) * readAlpha
+    x_disp = (yaw_disp   ** 3 + yaw_disp) * readAlpha / 2
     y_disp = (pitch_disp ** 3 + pitch_disp) * readAlpha
 
     # quadratic function

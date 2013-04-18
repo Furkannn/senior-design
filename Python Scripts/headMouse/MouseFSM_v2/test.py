@@ -37,7 +37,6 @@ readParams()
 
 mouseFsm = mouseFSMClass.MouseMotionFSMClass(params=params)
 
-
 while 1:
   mouseFsm.step()
   if checkForNewParams():

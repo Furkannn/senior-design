@@ -2,6 +2,7 @@
 import time
 import IMUSensorClass
 import HostDeviceClass
+import acd_file_io_lib as io
 
 class MouseMotionFSMClass:
 
@@ -128,6 +129,9 @@ class MouseMotionFSMClass:
     self.checkTriggers()
 
   def updateParams(self, params):
+    if params['recenter'] == 1:
+      self.currentState = State.Calibrate
+      io.updateParameters(recenter=0)
     self.params = params
     self.imuSensor.params = params
 

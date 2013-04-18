@@ -165,6 +165,9 @@ class Ui_Dialog(object):
         self.retranslateUi(Dialog)
 
 #=============== START BACKUP ===============================
+        self.runButton.setText("Recenter")
+        acd_file_io_lib.updateParameters(recenter=0)
+        acd_file_io_lib.updateParameters(exit=0)
         self.lastUpdate = 0
         self.messageTimer = QtCore.QTimer()
         self.messageTimer.start(1000)
@@ -190,7 +193,12 @@ class Ui_Dialog(object):
         QtCore.QObject.connect(self.logButton, QtCore.SIGNAL(_fromUtf8("clicked()")), self.radioButtonClick)
         QtCore.QObject.connect(self.joystickButton, QtCore.SIGNAL(_fromUtf8("clicked()")), self.radioButtonClick)
         QtCore.QObject.connect(self.messageTimer, QtCore.SIGNAL("timeout()"), self.messageUpdate)
+        QtCore.QObject.connect(self, QtCore.SIGNAL("rejected()"), self.xPressed)
         QtCore.QMetaObject.connectSlotsByName(Dialog)
+
+
+    def xPressed(self):
+        acd_file_io_lib.updateParameters(exit=1)
 
     def radioButtonClick(self):
         if(self.basicButton.isChecked()):
@@ -223,13 +231,11 @@ class Ui_Dialog(object):
             acd_file_io_lib.updateParameters(alpha = alphaValue - 1)
 
     def toggleStartStop(self):
-        if(self.runButton.text() == "Start"):
-            self.runButton.setText("Stop")
-            self.statusLabel.setText("Running")
-        else:
-            self.runButton.setText("Start")
-            self.statusLabel.setText("Stopped")
+        acd_file_io_lib.updateParameters(recenter=1)
+            
+
     def exitSoftware(self):
+        acd_file_io_lib.updateParameters(exit=1)
         QtGui.QApplication.quit()
 
     def messageUpdate(self):
@@ -248,7 +254,7 @@ class Ui_Dialog(object):
         self.gestureLabel_2.setText(_translate("Dialog", "Sensitivity", None))
         self.minusButton.setText(_translate("Dialog", "-", None))
         self.plusButton.setText(_translate("Dialog", "+", None))
-        self.runButton.setText(_translate("Dialog", "Start", None))
+        self.runButton.setText(_translate("Dialog", "Recenter", None))
         self.exitButton.setText(_translate("Dialog", "Exit", None))
         self.groupBox.setTitle(_translate("Dialog", "Mode", None))
         self.basicButton.setText(_translate("Dialog", "Basic", None))

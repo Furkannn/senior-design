@@ -7,12 +7,11 @@ from numpy import mean,cov,double,cumsum,dot,linalg,array,rank
 
 class detectGesturesClass():
 
-  def __init__(self, baudrate=57600, portname="/dev/ttyACM0", numberOfSets=10, window=80):
-    self.baudrate = baudrate
-    self.portname = portname
+  def __init__(self, serial_var, numberOfSets=10, window=80):
     self.numberOfSets = numberOfSets
     self.sensorHistory = []
     self.window = window
+    self.ser = serial_var
 
     # load the setClassAverages
     self.setClassAverages = io.fetchYaml('pca_scores.yaml')
@@ -20,9 +19,6 @@ class detectGesturesClass():
     # load the pca_params
     self.pca_params = io.fetchYaml('pca_params.yaml')
 
-    # connect to available devices
-    self.ser = io.connectToAvailablePort(baudrate=self.baudrate, portName=self.portname, debug=True)
-    
     # clear serial buffer
     timeI = time.time()
     while time.time() - timeI < 3.5:
@@ -32,11 +28,12 @@ class detectGesturesClass():
     self.error = {'left_nod': [], 'right_nod': []}
     io.saveYaml('error_graphs_data.yaml', self.error)
 
+    print "!!!!! created detection object !!!!!"
 
-  def detectGestures(self, setClasses=['left_nod', 'right_nod']):
+
+  def detectGestures(self, rawData, setClasses=['left_nod', 'right_nod']):
 
     # get new data from serial
-    rawData = self.ser.readline()
     rawData = rawData.split(',')
     newData = []
     for dp in rawData:
@@ -69,9 +66,15 @@ class detectGesturesClass():
       error[setClass] = e
       if e < 0.045:
         print setClass
+        return True
+
+    return False
     
     #print self.error
     #print error
 
 
-      
+  def resetHistory(self):
+    print "RESETTING......................................"
+    self.sensorHistory = []
+

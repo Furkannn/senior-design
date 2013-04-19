@@ -8,6 +8,7 @@ from serial.tools import list_ports
 import HelperClasses
 import acd_file_io_lib as io
 import math
+import detectGesturesClass as detector
 
 
 # ======================= IMUSensorClass ======================= 
@@ -22,6 +23,9 @@ class IMUSensorClass:
     # assign params
     self.params = params
 
+    # gesture detection
+    self.gesture = detector.detectGesturesClass(serial_var=self.ser)
+
 
   
   # get new IMU data
@@ -29,6 +33,7 @@ class IMUSensorClass:
     while 1:
       try:
         raw_data = self.ser.readline()
+        self.raw_data_orig = raw_data
         raw_data = raw_data.rstrip().rsplit(',')
 
         #self.currentYpr = YPRDataClass(-1*float(raw_data[0]), -1*float(raw_data[1]), -1*float(raw_data[2]))
@@ -154,6 +159,16 @@ class IMUSensorClass:
 
     self.cursorDisp = HelperClasses.CursorClass(x_disp, y_disp)
     return
+
+
+
+  def runGestureDetection(self):
+    return self.gesture.detectGestures(rawData=self.raw_data_orig)
+
+
+
+  def resetIMUHistory(self):
+    return self.gesture.resetHistory()
 
 
 

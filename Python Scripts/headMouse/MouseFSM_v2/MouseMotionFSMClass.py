@@ -81,6 +81,12 @@ class MouseMotionFSMClass:
       #print "executeBehavior - calculate"
       self.imuSensor.getData()
 
+      # check the IMU history window for gestures
+      if self.imuSensor.runGestureDetection() == True:
+        io.updateParameters(recenter=1)
+        self.imuSensor.resetIMUHistory()
+
+
 
     # ======== Calculate Click ========
     elif self.currentState == State.Click:

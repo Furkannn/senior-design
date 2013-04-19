@@ -134,7 +134,7 @@ class IMUSensorClass:
     readAlpha = self.params['alpha_vals'][self.params['alpha']]
 
     # x^3 function
-    x_disp = (yaw_disp   ** 3 + yaw_disp) * readAlpha / 2
+    x_disp = (yaw_disp   ** 3 + yaw_disp) * readAlpha / 2.5
     y_disp = (pitch_disp ** 3 + pitch_disp) * readAlpha
 
     # quadratic function

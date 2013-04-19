@@ -38,11 +38,14 @@ class Ui_Dialog(object):
         self.gestureLabel.setFont(font)
         self.gestureLabel.setObjectName(_fromUtf8("gestureLabel"))
         self.leftNodButton = QtGui.QPushButton(Dialog)
-        self.leftNodButton.setGeometry(QtCore.QRect(10, 40, 91, 51))
+        self.leftNodButton.setGeometry(QtCore.QRect(10, 40, (91*2) + 19, 51))
         self.leftNodButton.setObjectName(_fromUtf8("leftNodButton"))
-        self.rightNodButton = QtGui.QPushButton(Dialog)
-        self.rightNodButton.setGeometry(QtCore.QRect(120, 40, 91, 51))
-        self.rightNodButton.setObjectName(_fromUtf8("rightNodButton"))
+        font = QtGui.QFont()
+        font.setPointSize(10)
+        self.leftNodButton.setFont(font)
+#        self.rightNodButton = QtGui.QPushButton(Dialog)
+#        self.rightNodButton.setGeometry(QtCore.QRect(120, 40, 91, 51))
+#        self.rightNodButton.setObjectName(_fromUtf8("rightNodButton"))
         self.gestureLabel_2 = QtGui.QLabel(Dialog)
         self.gestureLabel_2.setGeometry(QtCore.QRect(20, 110, 131, 21))
         font = QtGui.QFont()
@@ -185,7 +188,7 @@ class Ui_Dialog(object):
         QtCore.QObject.connect(self.plusButton, QtCore.SIGNAL(_fromUtf8("clicked()")), self.increaseSensitivity)
         QtCore.QObject.connect(self.minusButton, QtCore.SIGNAL(_fromUtf8("clicked()")), self.decreaseSensitivity)
         QtCore.QObject.connect(self.leftNodButton, QtCore.SIGNAL(_fromUtf8("clicked()")), self.recordLeftNodTrainingSet)
-        QtCore.QObject.connect(self.rightNodButton, QtCore.SIGNAL(_fromUtf8("clicked()")), self.recordRightNodTrainingSet)
+#        QtCore.QObject.connect(self.rightNodButton, QtCore.SIGNAL(_fromUtf8("clicked()")), self.recordRightNodTrainingSet)
         QtCore.QObject.connect(self.runButton, QtCore.SIGNAL(_fromUtf8("clicked()")), self.toggleStartStop)
         QtCore.QObject.connect(self.exitButton, QtCore.SIGNAL(_fromUtf8("clicked()")), self.exitSoftware)
         QtCore.QObject.connect(self.basicButton, QtCore.SIGNAL(_fromUtf8("clicked()")), self.radioButtonClick)
@@ -209,6 +212,7 @@ class Ui_Dialog(object):
         acd_file_io_lib.updateParameters(mode = checkedMode)
 
     def recordLeftNodTrainingSet(self):
+		# TODO - add object calls (Survy)
          QtGui.QMessageBox.about(self, "Test Box", "Left Nod Clicked")
 
     def recordRightNodTrainingSet(self):
@@ -248,8 +252,8 @@ class Ui_Dialog(object):
     def retranslateUi(self, Dialog):
         Dialog.setWindowTitle(_translate("Head Mouse Settings", "Head Mouse Settings", None))
         self.gestureLabel.setText(_translate("Dialog", "Gesture Calibration", None))
-        self.leftNodButton.setText(_translate("Dialog", "Left Nod", None))
-        self.rightNodButton.setText(_translate("Dialog", "Right Nod", None))
+        self.leftNodButton.setText(_translate("Dialog", "Shake Calibration", None))
+#        self.rightNodButton.setText(_translate("Dialog", "Right Nod", None))
         self.gestureLabel_2.setText(_translate("Dialog", "Sensitivity", None))
         self.minusButton.setText(_translate("Dialog", "-", None))
         self.plusButton.setText(_translate("Dialog", "+", None))

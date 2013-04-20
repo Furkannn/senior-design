@@ -14,6 +14,10 @@ class recordTrainingSetsClass():
     self.ser = io.connectToAvailablePort(baudrate=self.baudrate, portName=self.portname, debug=True)
 
 
+  def recordShakeTrainingSet(self):
+    self.recordTrainingSet("shake")
+
+
   def recordLeftNodTrainingSet(self):
     self.recordTrainingSet("left_nod")
 
@@ -52,5 +56,5 @@ class recordTrainingSetsClass():
         setsCollected = setsCollected + 1
         nodTime = time.time()
         if setsCollected <= self.numberOfSets:
-          print "NOD - " + str(setsCollected)
+          print str(setClass) + " - " + str(setsCollected)
 

@@ -5,6 +5,9 @@ import numpy
 
 class formatTrainingSetsClass():
 
+  def formatShakeTrainingSet(self):
+    self.formatTrainingSet("shake")
+
   def formatLeftNodTrainingSet(self):
     self.formatTrainingSet("left_nod")
 

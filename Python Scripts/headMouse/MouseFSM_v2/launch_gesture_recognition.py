@@ -25,15 +25,11 @@ args = parser.parse_args()
 if args.record:
   r = recorder.recordTrainingSetsClass()
   f = formatter.formatTrainingSetsClass()
-
-  r.recordLeftNodTrainingSet()
-  r.recordRightNodTrainingSet()
-  f.formatLeftNodTrainingSet()
-  f.formatRightNodTrainingSet()
-
-if args.train:
   t = trainer.trainModelClass()
-  t.trainModel()
+
+  r.recordShakeTrainingSet()
+  f.formatShakeTrainingSet()
+  t.trainShakeModel()
 
 if args.detect:
   d = detector.detectGesturesClass()

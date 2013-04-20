@@ -14,6 +14,9 @@ class trainModelClass():
     self.numberOfNods = numberOfNods
     self.window = window
 
+  def trainShakeModel(self):
+    self.trainModel(setClasses=['shake'])
+
   def trainModel(self, setClasses=['left_nod', 'right_nod']):
 
     # ========  read in training data  ========

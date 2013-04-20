@@ -28,8 +28,6 @@ class detectGesturesClass():
     self.error = {'left_nod': [], 'right_nod': []}
     io.saveYaml('error_graphs_data.yaml', self.error)
 
-    print "!!!!! created detection object !!!!!"
-
 
   def detectGestures(self, rawData, setClasses=['left_nod', 'right_nod']):
 

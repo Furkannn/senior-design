@@ -169,7 +169,7 @@ class Ui_Dialog(object):
 
 #=============== START BACKUP ===============================
         self.runButton.setText("Recenter")
-        acd_file_io_lib.updateParameters(exit=0, recenter=0)
+        acd_file_io_lib.updateParameters(exit=0, recenter=0, calibrate=0)
         self.lastUpdate = 0
         self.messageTimer = QtCore.QTimer()
         self.messageTimer.start(1000)
@@ -212,8 +212,7 @@ class Ui_Dialog(object):
         acd_file_io_lib.updateParameters(mode = checkedMode)
 
     def recordLeftNodTrainingSet(self):
-		# TODO - add object calls (Survy)
-         QtGui.QMessageBox.about(self, "Test Box", "Left Nod Clicked")
+		acd_file_io_lib.updateParameters(calibrate=1)
 
     def recordRightNodTrainingSet(self):
         QtGui.QMessageBox.about(self, "Test Box", "Right Nod Clicked")

@@ -172,7 +172,7 @@ class Ui_Dialog(object):
         acd_file_io_lib.updateParameters(exit=0, recenter=0, calibrate=0)
         self.lastUpdate = 0
         self.messageTimer = QtCore.QTimer()
-        self.messageTimer.start(1000)
+        self.messageTimer.start(10)
         Dialog.setWindowTitle("Head Mouse Settings")
         readArgs = acd_file_io_lib.readParameters()
         self.lcdDisplay.setNumDigits(2) 

@@ -12,7 +12,11 @@ class detectGesturesClass():
     self.sensorHistory = []
     self.window = window
     self.ser = serial_var
+    self.reloadPCAParams()
 
+
+  def reloadPCAParams(self):
+    print ".......................... RELOAD PARAMS ................................"
     # load the setClassAverages
     self.setClassAverages = io.fetchYaml('pca_scores.yaml')
 

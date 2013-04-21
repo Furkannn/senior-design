@@ -107,6 +107,6 @@ class trainModelClass():
       ax.plot(np.transpose(setClassAverages[setClass]))
       filename = 'graph_' + str(setClass) + '.png'
       plt.savefig(filename)
-      os.system("eog " + filename)
+      #os.system("eog " + filename)
     
 

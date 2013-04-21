@@ -1,0 +1,36 @@
+shake: !!python/object/apply:numpy.core.multiarray._reconstruct
+  args:
+  - !!python/name:numpy.ndarray ''
+  - !!python/tuple [0]
+  - b
+  state: !!python/tuple
+  - 1
+  - !!python/tuple [2, 80]
+  - !!python/object/apply:numpy.dtype
+    args: [f8, 0, 1]
+    state: !!python/tuple [3, <, null, null, null, -1, -1, 0]
+  - false
+  - !!binary |
+    JRkGqgV1QD9XnqxaQ4RAP674qQYTYD8/A83Kq8PPOT8QpBwpQZU0P1f8kbNxaC4/7rnEndccID/q
+    u8kQQpXnvkO9l1zkcyC/zStxH4x3Jb+v4jLozE4wv108r0G11DG/c3giaLR0ML8ndTHM/w8pv/1X
+    ik5R/yC/kou6r1RQBL99Hagl/6wRP/1dtbyIxRw/fGtmxIWlJT9Aen8fppYsP8Qbnb2j3y4/EBw9
+    1bb5MD/u9WR76aIyP6+IHw5Q1TM/zAGvGxgoND8heUDyY38rP/KBf2CYGz6/6e8VKpDAab+tNwOY
+    4zaBv+U/gbUKTpG/yGdCrH41n7+dGz6enaanv6RGIuKdpK2/O6YmTI7jr78Q54s/Hbmrv3nKWFdv
+    4KG/KmpS6ZU9hL+hgzcrhPmNP1XcYuCTBaU/oW8O9xD7rT+WHQbryuSwPxWMle5gb60/dC0f8NBH
+    pD9vXaPT4VySPzhL3UYou2q/2lJF5z7Ylr9yVWqjgfCkv88nFCC2J6i/FhY8FArnpL9FouYfnc+W
+    vzKpXYPcrmK/NyQLnKr/iT/Ena2454iXP5fDC2LIDJw/yztkajt+nD/4NA4TS1SZPzgbsb24i5Y/
+    Ak0xr4PBkT9J+9p9M4GJP/U9s+vP84M/Jr9OPrtWfj/Bj/XJVa5yPwSQ5jyDUWA/bA6cSkcoOj+o
+    D31WkmQ1v8yQKdTQhS+/S0KO5vLyGb9wZiX8tNUqv8tMPuCjChO/LYRnJ8HWLj/NayQ8kLc5P8Ej
+    DPsPxzY/3gtAiWF4LD+kLZdpJcH6PpEJSRBBZhe/wBOny6VCDr8VtcNLOFz+PlCy+8FbYig/W5JO
+    PCjoND+xkAmpB6Q+P/MZpzDFHVE/Pi5wpeIcRj/aLU8w855EP3sGYhXkT00/WlP27hO5Oj/EayEg
+    ueNHPw4+dpJ+70U/hVeSiMEqKr8X7xAmpcQ9PwgVKZIq4xe/UNjqQKj+Lj+1+KVd6ZcVvwxWwAj9
+    jio/aWUPuafeHD+ytmBovV1CP4bAUjNlYDQ/NqoCr97ATT/nw0U7iPhEP0AKlynkZSo/jxl4tdo2
+    Nz89AkETGPpFP2165m7YKiO/YYkCh8AIQz+KOY+uMd8zP0xeZqofTTG/hisFO7BGTr+8RQClasdm
+    v+Y3iR6hb4K/GF+/O4bVkb+vGdQWJiCWv4XFllRUdJm/aaPP8x3slb9JmcXRU0dvv1pM07FKW5A/
+    Yv5Q+g7doj+5n4XbW/+pP5PdiwsD9aw/2q9svn0+qT+xsHuPJIirPwmWUjnDXao/EZ5HOreQnT+6
+    p3JN3dyev+RnFK9rYau/agJ7xExErL95l1DlYkKtvyet2keMha2/abt2uHVtqr8KuWwbd3mYv2pe
+    xXcBZYk/1EEoKKMEoD/m1vZkB5ygP7nU38TSTps/IDSgADpqkT9pR9FPl9+HP5rxKxttjGA/k+t3
+    DPj4MD+Jh2QMTwNGPxUmvOWw91y//EKBy3LFX79N2wwAu9pmv29+BbkG+WW/4TVmnw+ccr9z94Zr
+    K+hzv8YtCcsmn3i/7LdOV/3qfL9HImP1tWeAv2IFlDfBDoO/uiJVFq5rgb9TkPSeDVx+v0Ulxe41
+    r3O/x3H5ENJwab9HxsRujrZbv1hcF2QtDza/+DRdwqoXMT97OCDlMGQdv8cUzDTt2yo/dXdrDfbY
+    Tj8pAND+nWFLP5WS4J2am0o/ZH2pzapkWz8=

@@ -138,6 +138,9 @@ class MouseMotionFSMClass:
     if params['recenter'] == 1:
       self.currentState = State.Calibrate
       io.updateParameters(recenter=0)
+    if params['calibrate'] == 1:
+      self.imuSensor.runGestureCalibration()
+      io.updateParameters(calibrate=0)
     self.params = params
     self.imuSensor.params = params
 

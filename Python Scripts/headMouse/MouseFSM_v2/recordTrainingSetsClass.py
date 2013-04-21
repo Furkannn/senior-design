@@ -5,13 +5,9 @@ import time
 
 class recordTrainingSetsClass():
 
-  def __init__(self, baudrate=57600, portname="/dev/ttyACM0", numberOfSets=10):
-    self.baudrate = baudrate
-    self.portname = portname
+  def __init__(self, serial_var, numberOfSets=10):
+    self.ser = serial_var
     self.numberOfSets = numberOfSets
-
-    # connect to available devices
-    self.ser = io.connectToAvailablePort(baudrate=self.baudrate, portName=self.portname, debug=True)
 
 
   def recordShakeTrainingSet(self):
@@ -40,7 +36,9 @@ class recordTrainingSetsClass():
 
     # clear serial buffer
     timeI = time.time()
-    print("Do a " + setClass + " when prompted. You will be prompted 10 times.")
+    mStr = "Do a " + setClass + " when prompted."
+    print(mStr)
+    io.writeMessage(mStr)
     while time.time() - timeI < bufferClearTime:
       raw_data = self.ser.readline()
 
@@ -56,5 +54,9 @@ class recordTrainingSetsClass():
         setsCollected = setsCollected + 1
         nodTime = time.time()
         if setsCollected <= self.numberOfSets:
-          print str(setClass) + " - " + str(setsCollected)
+          mStr = str(setClass) + " - " + str(setsCollected) + "/" + str(self.numberOfSets)
+          print mStr
+          io.writeMessage(mStr)
+
+    io.writeMessage("")
 

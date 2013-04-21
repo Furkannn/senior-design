@@ -8,6 +8,9 @@ from serial.tools import list_ports
 import HelperClasses
 import acd_file_io_lib as io
 import math
+import recordTrainingSetsClass as recorder
+import formatTrainingSetsClass as formatter
+import trainModelClass as trainer
 import detectGesturesClass as detector
 
 
@@ -164,6 +167,19 @@ class IMUSensorClass:
 
   def runGestureDetection(self):
     return self.gesture.detectGestures(rawData=self.raw_data_orig)
+
+
+
+  def runGestureCalibration(self):
+    r = recorder.recordTrainingSetsClass(self.ser)
+    f = formatter.formatTrainingSetsClass()
+    t = trainer.trainModelClass()
+    
+    r.recordShakeTrainingSet()
+    f.formatShakeTrainingSet()
+    t.trainShakeModel()
+
+    self.gesture.reloadPCAParams()
 
 
 

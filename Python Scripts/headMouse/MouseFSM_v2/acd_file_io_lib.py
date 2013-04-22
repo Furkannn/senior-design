@@ -101,4 +101,7 @@ def readMessage():
   messageFile = open('UiMessage.yaml', 'r')
   temp = yaml.load(messageFile)
   messageFile.close()
-  return temp['message']
+  try:
+    return temp['message']
+  except:
+    return readMessage()

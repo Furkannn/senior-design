@@ -27,7 +27,7 @@ def connectToAvailablePort(baudrate=57600, portName='/dev/ttyUSB0', findPort=Tru
 
   if findPort:
     for (portName, b, c) in list_ports.comports():
-      if portName.find("ACM") >= 0 or portName.find("USB") >= 0:
+      if portName.find("ACM") >= 0 or portName.find("USB") >= 0 or portName.find("ttyS"):
         
         try:
           if debug: print "Trying port " + portName + " at " + str(baudrate)

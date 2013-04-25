@@ -244,7 +244,8 @@ class Ui_Dialog(object):
         if(time.ctime(os.path.getmtime('UiMessage.yaml')) != self.lastUpdate):
             self.lastUpdate = time.ctime(os.path.getmtime('UiMessage.yaml'))
             self.statusLabel.setText(acd_file_io_lib.readMessage())
-
+            self.raise_()
+            self.activateWindow()
 
 #=============== END BACKUP ===============================
 
